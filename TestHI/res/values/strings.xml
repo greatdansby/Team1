@@ -5,5 +5,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_review_ehr">Review My Records</string>
+    <string name="title_activity_survey_activity">Surveys &amp; Quizes</string>
+    <string name="title_activity_thirdparty_activity">3rd Party Apps</string>
+    <string name="title_activity_home">HomeActivity</string>
 
 </resources>
