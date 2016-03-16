@@ -1,0 +1,146 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Login" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp" >
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="300dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="15dp"
+            android:background="@drawable/roundedcorners"
+            android:gravity="center"
+            android:text="Home"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="This home screen, where you can login and navigate to the following areas."
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="300dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="15dp"
+            android:background="@drawable/roundedcorners"
+            android:gravity="center"
+            android:text="My Records"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Review all of your medical information and view statistics on your health profile"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_weight="0" >
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_width="300dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="15dp"
+            android:background="@drawable/roundedcorners"
+            android:gravity="center"
+            android:text="Surveys &amp; Quizzes"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Take surveys &amp; quizzes to better help predict health outcomes. View previous survey results."
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_weight="0" >
+
+        <TextView
+            android:id="@+id/TextView06"
+            android:layout_width="300dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="15dp"
+            android:background="@drawable/roundedcorners"
+            android:gravity="center"
+            android:text="3rd Party Apps"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/TextView05"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Connect to 3rd party applications such as FitBit &amp; 23andMe to see new statistics on your health."
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
