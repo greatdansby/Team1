@@ -8,6 +8,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
 import android.os.AsyncTask;
 
 public class fetchDataFromAppServer extends AsyncTask<String, Void, String>{
@@ -17,8 +18,8 @@ public class fetchDataFromAppServer extends AsyncTask<String, Void, String>{
 	
 	@Override
 	protected void onPostExecute(String v) {
-
-		delegate.processFinish(v,i);
+		
+		delegate.processFinish(v.substring(1),(String) v.subSequence(0, 1));
 		
 	}
 	String result = "";
@@ -26,7 +27,7 @@ public class fetchDataFromAppServer extends AsyncTask<String, Void, String>{
 	protected String doInBackground(String... params) {
 		
 		try{
-            String link = "http://192.185.170.105/~fhir/"+(String)params[0];
+            String link = "http://192.185.170.105/~fhir/"+(String)params[1];
             
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -45,7 +46,7 @@ public class fetchDataFromAppServer extends AsyncTask<String, Void, String>{
             in.close();
             
             result = sb.toString();
-            return result;
+            return (String)params[0] + result;
 		}
 		catch(Exception e){
 			return result;

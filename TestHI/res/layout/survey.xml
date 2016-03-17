@@ -1,0 +1,32 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/survey"
+    android:layout_width="fill_parent"
+    android:layout_height="150dp"
+    android:layout_weight="0"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/survey_name"
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="top"
+        android:layout_weight="1"
+        android:text="Connect to 3rd party applications such as FitBit &amp; 23andMe to see new statistics on your health."
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/survey_button"
+        android:layout_width="100dp"
+        android:layout_height="fill_parent"
+        android:layout_margin="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/roundedcorners"
+        android:gravity="center"
+        android:onClick="setSurvey"
+        android:text="Take Survey"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dp" />
+
+</LinearLayout>

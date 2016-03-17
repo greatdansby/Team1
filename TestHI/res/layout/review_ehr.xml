@@ -79,7 +79,7 @@
                         android:background="@drawable/box" >
 
                         <TextView
-                            android:id="@+id/TextView08"
+                            android:id="@+id/survey_button"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_gravity="left"
@@ -102,7 +102,7 @@
                         android:background="@drawable/box" >
 
                         <TextView
-                            android:id="@+id/TextView07"
+                            android:id="@+id/survey_name"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_gravity="left"
