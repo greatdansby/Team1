@@ -6,15 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity {
+	
+	static TextView user; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);
 
+	    user = (TextView) findViewById(R.id.userLogin);
+	    
 	    TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
 	    tabHost.setup();
 
@@ -39,6 +44,7 @@ public class MainActivity extends TabActivity {
 	    tabHost.addTab(tab1);
 	    tabHost.addTab(tab2);
 	    tabHost.addTab(tab3);
+	    
 	}
 
 }

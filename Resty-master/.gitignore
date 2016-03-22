@@ -1,0 +1,17 @@
+# Ignore all hidden files, except this .gitignore file.
+.*
+!.sorting
+!.gitignore
+!.mavenrc
+# Ignore all files with the following extension.
+*.log
+*.iws
+*.orig
+*.iml
+*.ipr
+.idea
+*.ids
+*.pyc
+# Ignore the build directory
+target
+
