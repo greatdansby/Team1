@@ -37,6 +37,7 @@ public class SurveyActivity extends Activity implements myInterface {
 		super.onStart();
 		fetchSurveyNames.delegate = this;
         fetchSurveyNames.execute("a","GetAllSurveys?userId="+MainActivity.user.getTag());
+        
 	}
 
 	@Override
@@ -109,6 +110,9 @@ public class SurveyActivity extends Activity implements myInterface {
 			            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray); //selected item will look like a spinner set from XML
 			            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			            dropdown.setAdapter(spinnerArrayAdapter);
+			            if(p.getString("surveyQuestion_defaultChoice") != null && !p.getString("surveyQuestion_defaultChoice").isEmpty()){
+			            	dropdown.setSelection(spinnerArrayAdapter.getPosition(p.getString("surveyQuestion_defaultChoice")));
+			            	}
 			            child.setTag(p.getInt("id"));
 			            parent.addView(child);
 			        }
