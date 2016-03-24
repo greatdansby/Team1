@@ -20,10 +20,10 @@ public class ThirdpartyActivity extends Activity {
 		
 	  Bundle b = new Bundle();
 
-	  b.putString("client_id", "659e9bd58ec4ee7fa01bc6b4627cb37e5c13ec21");
-	  b.putString("auth_url", "http://10.0.2.2:3000/sessionToken");
-	  b.putString("client_user_id", "test_user21@gmail.com");
-	  b.putString("language", "en");
+	  b.putString("client_id", "532188568c08e0c786e821746d15edb240096d50");
+	  //b.putString("auth_url", "http://10.0.2.2:3000/sessionToken");
+	  //b.putString("client_user_id", "1");
+	  //b.putString("language", "en");
 
 	  //PublicToken (mandatory for existing users)
 	  //b.putString("public_token", "e56fa0350866bcf266da442cb974d84e");
