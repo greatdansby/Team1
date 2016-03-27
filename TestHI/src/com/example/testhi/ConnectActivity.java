@@ -114,7 +114,7 @@ public class ConnectActivity extends Activity {
     /** Fetch params from caller */
     private void fetchParameters() {
         Bundle b = getIntent().getExtras();
-        clientId = b.getString("client_id");
+        clientId = "532188568c08e0c786e821746d15edb240096d50";//b.getString("client_id");
         authURL = b.getString("auth_url");
         Log.d("hapi-auth", "Auth URL: " + authURL);
 

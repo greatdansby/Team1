@@ -15,7 +15,8 @@ public class ThirdpartyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thirdparty_activity);
 	}
-	public void connectHealthData(View view){
+	protected void onStart(){
+		super.onStart();
 		Intent intent = new Intent(this, ConnectActivity.class);
 		
 	  Bundle b = new Bundle();
