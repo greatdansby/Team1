@@ -17,7 +17,8 @@ public class MainActivity extends TabActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);
-
+	    getActionBar().setTitle("WaitingRoom App");
+	    
 	    user = (TextView) findViewById(R.id.userLogin);
 	    
 	    TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
@@ -30,15 +31,15 @@ public class MainActivity extends TabActivity {
 
 	    tab0.setIndicator("Home");
 	    tab0.setContent(new Intent(this,HomeActivity.class));
+		
 	    
 	    tab1.setIndicator("My Records & Stats");
 	    tab1.setContent(new Intent(this,ReviewEhrActivity.class));
-
+		
 	    tab2.setIndicator("Surveys & Quizzes");
 	    tab2.setContent(new Intent(this,SurveyActivity.class));
-
-	    tab3.setIndicator("Third Party Connections");
-	    
+		
+	    tab3.setIndicator("Third Party Connections");	    
 		Intent intent = new Intent(this, ConnectActivity.class);
 		
 		  Bundle b = new Bundle();

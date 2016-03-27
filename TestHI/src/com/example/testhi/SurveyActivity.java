@@ -35,6 +35,7 @@ public class SurveyActivity extends Activity implements myInterface {
 	
 	protected void onStart(){
 		super.onStart();
+
 		fetchSurveyNames.delegate = this;
         fetchSurveyNames.execute("a","GetAllSurveys?userId="+MainActivity.user.getTag());
         

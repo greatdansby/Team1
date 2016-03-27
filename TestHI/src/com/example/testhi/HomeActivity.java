@@ -1,5 +1,7 @@
 package com.example.testhi;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,8 +10,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,23 +28,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class HomeActivity extends Activity implements myInterface {
-	
-	fetchDataFromAppServer fetchLogin = new fetchDataFromAppServer();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-
-	}
-
-	protected void onStart(){
-		super.onStart();
+		
 		TextView t = (TextView) MainActivity.user;
 		t.setTag(1);
 		t.setText("Current user: ");
+
+
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -59,38 +60,60 @@ public class HomeActivity extends Activity implements myInterface {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@SuppressLint("DefaultLocale")
 	public void login(View view){
-		fetchLogin.delegate = this;
+		
 		
 		EditText email = (EditText) this.findViewById(R.id.editText1);
 		EditText pwd = (EditText) this.findViewById(R.id.editText2);
 		
-        fetchLogin.execute("a","Login?userEmail="+email.getText()+"&userPassword="+pwd.getText());
+		String emailString = null;
+		try {
+			emailString = URLEncoder.encode(email.getText().toString().toLowerCase(), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		fetchDataFromAppServer fetchLogin = new fetchDataFromAppServer();
+		fetchLogin.delegate = this;
+		fetchLogin.execute("a","Login?userEmail="+emailString+"&userPassword="+pwd.getText());
 	}
 	
 	public void processFinish(String output, String id) {
 
 		JSONArray jArray;
-		
-		switch(id) {
-			case "a": //Receive login confirmation
+		if (output.equals("null\t\t".toString())==false) {
+			switch(id) {
+				case "a": //Receive login confirmation
+							
+					try {
 						
-				try {
+						//jArray = new JSONArray(output);
+						JSONObject p = new JSONObject(output);
+									        
+						TextView t = (TextView) MainActivity.user;
+						t.setTag(p.getInt("id"));
+						t.setText("Current user: "+p.getString("user_emailAddress"));
+						LinearLayout l = (LinearLayout) this.findViewById(R.id.loginSection);
+						l.setVisibility(View.INVISIBLE);
 					
-					//jArray = new JSONArray(output);
-					JSONObject p = new JSONObject(output);
-								        
-					TextView t = (TextView) MainActivity.user;
-					t.setTag(p.getInt("id"));
-					t.setText("Current user: "+p.getString("user_emailAddress"));
-					LinearLayout l = (LinearLayout) this.findViewById(R.id.loginSection);
-					l.setVisibility(View.INVISIBLE);
-				
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				break;
+					} catch (JSONException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					break;
+			}
+		} else {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Incorrect Login. Please try again.")
+			       .setCancelable(false)
+			       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                //do things
+			           }
+			       });
+			AlertDialog alert = builder.create();
+			alert.show();
 		}
 	}
 
