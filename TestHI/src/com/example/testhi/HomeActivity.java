@@ -1,12 +1,30 @@
 package com.example.testhi;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements myInterface {
+	
+	fetchDataFromAppServer fetchLogin = new fetchDataFromAppServer();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +37,7 @@ public class HomeActivity extends Activity {
 		super.onStart();
 		TextView t = (TextView) MainActivity.user;
 		t.setTag(1);
-		t.setText("Current user: Johnny Blaze");
+		t.setText("Current user: ");
 	}
 	
 	@Override
@@ -40,4 +58,40 @@ public class HomeActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void login(View view){
+		fetchLogin.delegate = this;
+		
+		EditText email = (EditText) this.findViewById(R.id.editText1);
+		EditText pwd = (EditText) this.findViewById(R.id.editText2);
+		
+        fetchLogin.execute("a","Login?userEmail="+email.getText()+"&userPassword="+pwd.getText());
+	}
+	
+	public void processFinish(String output, String id) {
+
+		JSONArray jArray;
+		
+		switch(id) {
+			case "a": //Receive login confirmation
+						
+				try {
+					
+					//jArray = new JSONArray(output);
+					JSONObject p = new JSONObject(output);
+								        
+					TextView t = (TextView) MainActivity.user;
+					t.setTag(p.getInt("id"));
+					t.setText("Current user: "+p.getString("user_emailAddress"));
+					LinearLayout l = (LinearLayout) this.findViewById(R.id.loginSection);
+					l.setVisibility(View.INVISIBLE);
+				
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				break;
+		}
+	}
+
 }

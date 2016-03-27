@@ -4,6 +4,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/loginSection"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="10dp" >
@@ -37,7 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Login" />
+            android:text="Login"
+            android:onClick="login"/>
 
     </LinearLayout>
 
