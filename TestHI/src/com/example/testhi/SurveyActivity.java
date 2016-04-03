@@ -16,6 +16,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -75,9 +77,9 @@ public class SurveyActivity extends Activity implements myInterface {
 			            btn.setOnClickListener(new OnClickListener(){
 			            	public void onClick(View v){
 			      
-			            		getSurveyResults(v);
+			            		getSurveyResults(v);			            	
 			            		fillSurvey(v);
-			            		
+			            		populateAnswers(v);
 			            	}
 			            });
 			            child.setTag(p.getInt("id"));
@@ -97,9 +99,10 @@ public class SurveyActivity extends Activity implements myInterface {
 					parent = (LinearLayout) findViewById(R.id.surveyQuestions);
 					parent.removeAllViews();
 					LayoutInflater inflater = (LayoutInflater)getBaseContext() .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+					JSONObject p = (JSONObject) jArray.get(0);
 					
 			        for(int i = 0; i < jArray.length(); i++) {
-			            JSONObject p = (JSONObject) jArray.get(i);
+			            p = (JSONObject) jArray.get(i);
 			            child = (LinearLayout) inflater.inflate(R.layout.survey_question, null);
 			            TextView txt = (TextView) child.findViewById(R.id.questionText);
 			            txt.setText(p.getString("surveyQuestion_text"));
@@ -112,10 +115,41 @@ public class SurveyActivity extends Activity implements myInterface {
 			            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			            dropdown.setAdapter(spinnerArrayAdapter);
 			            if(p.getString("surveyQuestion_defaultChoice") != null && !p.getString("surveyQuestion_defaultChoice").isEmpty()){
-			            	dropdown.setSelection(spinnerArrayAdapter.getPosition(p.getString("surveyQuestion_defaultChoice")));
+			            	dropdown.setSelection(spinnerArrayAdapter.getPosition(p.getString("surveyQuestion_defaultChoice")));			            	
 			            	}
+			            dropdown.setOnItemSelectedListener(new SpinnerItemSelectedListener(p,(Integer) MainActivity.user.getTag()));
 			            child.setTag(p.getInt("id"));
 			            parent.addView(child);
+			        }
+			       
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				break;
+			case "c": //Populate survey results
+				TextView t = new TextView(this);
+				t.setText(output);
+				LinearLayout surveyResults = (LinearLayout) findViewById(R.id.surveyQuestions);
+				surveyResults.addView(t);
+				break;	
+			case "d": //Populate survey questions
+		
+				try {
+					
+					jArray = new JSONArray(output);
+					parent = (LinearLayout) findViewById(R.id.surveyQuestions);					
+					
+			        for(int i = 0; i < jArray.length(); i++) {
+			            JSONObject p = (JSONObject) jArray.get(i);
+			            LinearLayout childDropdown = (LinearLayout) parent.findViewWithTag(p.getInt("surveyQuestion_id"));
+			            for (int x =0 ;x <childDropdown.getChildCount(); x++){
+			                if(childDropdown.getChildAt(x) instanceof Spinner){
+			                        Spinner spinner = (Spinner) childDropdown.getChildAt(x);
+			                        spinner.setSelection(getIndex(spinner, p.getString("surveyAnswer_text")));
+			                }
+			            }
+			            
 			        }
 				
 				} catch (JSONException e1) {
@@ -123,9 +157,7 @@ public class SurveyActivity extends Activity implements myInterface {
 					e1.printStackTrace();
 				}
 				break;
-			case "c": //Populate survey questions
-				break;
-			}		
+			}
 	}
 
 	public void fillSurvey(View v) {
@@ -133,8 +165,17 @@ public class SurveyActivity extends Activity implements myInterface {
 		fetchDataFromAppServer fetchSurveyQuestions = new fetchDataFromAppServer();
 		fetchSurveyQuestions.delegate = this;
 		fetchSurveyQuestions.execute("b","GetSurveyQuestions?surveyId="+v.getTag()+"&userId="+MainActivity.user.getTag());
+	
+	}
+	
+	public void populateAnswers(View v) {
+		
+		fetchDataFromAppServer fetchSurveyAnswers = new fetchDataFromAppServer();
+		fetchSurveyAnswers.delegate = this;
+		fetchSurveyAnswers.execute("d","GetSurveyAnswers?surveyId="+v.getTag()+"&userId="+MainActivity.user.getTag());
 		
 	}
+	
 	public void getSurveyResults(View v) {
 		
 		fetchDataFromAppServer fetchSurveyResults = new fetchDataFromAppServer();
@@ -142,5 +183,22 @@ public class SurveyActivity extends Activity implements myInterface {
 		fetchSurveyResults.execute("c","GetSurveyResults?surveyId="+v.getTag()+"&userId="+MainActivity.user.getTag());
 		
 	}
+	
+	public void setSurvey(View v){
+		
+	}
+	
+	private int getIndex(Spinner spinner, String myString)
+    {
+     int index = 0;
+
+     for (int i=0;i<spinner.getCount();i++){
+      if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+       index = i;
+       break;
+      }
+     }
+     return index;
+    } 
 	
 }

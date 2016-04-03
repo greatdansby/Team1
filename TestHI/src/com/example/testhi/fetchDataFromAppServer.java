@@ -18,7 +18,7 @@ public class fetchDataFromAppServer extends AsyncTask<String, Void, String>{
 	
 	@Override
 	protected void onPostExecute(String v) {
-		
+
 		delegate.processFinish(v.substring(1),(String) v.subSequence(0, 1));
 		
 	}

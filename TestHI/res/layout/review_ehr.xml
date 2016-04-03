@@ -3,10 +3,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <Gallery
-            android:id="@+id/gallery1"
-            android:layout_width="match_parent"
-            android:layout_height="350dp" />
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="350dp" >
+
+            <LinearLayout
+                android:id="@+id/chartView"
+                android:layout_width="500dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
         <TextView
             android:id="@+id/textView1"
@@ -283,6 +293,8 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+
             </ScrollView>
 
         </LinearLayout>

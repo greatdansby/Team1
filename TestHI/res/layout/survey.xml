@@ -24,9 +24,8 @@
         android:layout_weight="1"
         android:background="@drawable/roundedcorners"
         android:gravity="center"
-        android:onClick="setSurvey"
         android:text="Take Survey"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
 </LinearLayout>
