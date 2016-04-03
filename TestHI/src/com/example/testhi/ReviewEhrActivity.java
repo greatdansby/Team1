@@ -22,6 +22,8 @@ public class ReviewEhrActivity extends Activity {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.review_ehr);
 		
+		//http://192.185.170.105/~fhir/Analytics/Risks/?patientId=1
+		
 		ArrayList<BarEntry> entries = new ArrayList<>();
 		entries.add(new BarEntry(4f, 0));
 		entries.add(new BarEntry(8f, 1));

@@ -61,29 +61,31 @@ public class SurveyActivity extends Activity implements myInterface {
 					
 			        for(int i = 0; i < jArray.length(); i++) {
 			            JSONObject p = (JSONObject) jArray.get(i);
-			            child = (LinearLayout) inflater.inflate(R.layout.survey, null);
-			            TextView txt = (TextView) child.findViewById(R.id.survey_name);
-			            txt.setText(p.getString("survey_name"));
-			            TextView btn = (TextView) child.findViewById(R.id.survey_button);
-			            btn.setTag(p.getInt("id"));
-			            switch(p.getInt("survey_taken")){
-			            	case 0:
-			            		btn.setText("Take Survey".toString());
-			            		break;
-			            	case 1:
-			            		btn.setText("View Results".toString());
-			            		break;
-			            }
-			            btn.setOnClickListener(new OnClickListener(){
-			            	public void onClick(View v){
-			      
-			            		getSurveyResults(v);			            	
-			            		fillSurvey(v);
-			            		populateAnswers(v);
-			            	}
-			            });
-			            child.setTag(p.getInt("id"));
-			            parent.addView(child);
+			            if(p.getInt("survey_enabled")==1){
+				            child = (LinearLayout) inflater.inflate(R.layout.survey, null);
+				            TextView txt = (TextView) child.findViewById(R.id.survey_name);
+				            txt.setText(p.getString("survey_name"));
+				            TextView btn = (TextView) child.findViewById(R.id.survey_button);
+				            btn.setTag(p.getInt("id"));
+				            switch(p.getInt("survey_taken")){
+				            	case 0:
+				            		btn.setText("Take Survey".toString());
+				            		break;
+				            	case 1:
+				            		btn.setText("View Results".toString());
+				            		break;
+				            }
+				            btn.setOnClickListener(new OnClickListener(){
+				            	public void onClick(View v){
+				      
+				            		getSurveyResults(v);			            	
+				            		fillSurvey(v);
+				            		populateAnswers(v);
+				            	}
+				            });
+				            child.setTag(p.getInt("id"));
+				            parent.addView(child);
+					    }
 			        }
 				
 				} catch (JSONException e1) {
@@ -97,7 +99,6 @@ public class SurveyActivity extends Activity implements myInterface {
 					
 					jArray = new JSONArray(output);
 					parent = (LinearLayout) findViewById(R.id.surveyQuestions);
-					parent.removeAllViews();
 					LayoutInflater inflater = (LayoutInflater)getBaseContext() .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 					JSONObject p = (JSONObject) jArray.get(0);
 					
@@ -121,6 +122,16 @@ public class SurveyActivity extends Activity implements myInterface {
 			            child.setTag(p.getInt("id"));
 			            parent.addView(child);
 			        }
+			        TextView t = new TextView(this);
+					t.setText("Get Results");
+					t.setOnClickListener(new OnClickListener(){
+
+						@Override
+						public void onClick(View v) {
+							getSurveyResults(v);							
+						}
+					});
+					parent.addView(t);
 			       
 				} catch (JSONException e1) {
 					// TODO Auto-generated catch block
@@ -131,6 +142,7 @@ public class SurveyActivity extends Activity implements myInterface {
 				TextView t = new TextView(this);
 				t.setText(output);
 				LinearLayout surveyResults = (LinearLayout) findViewById(R.id.surveyQuestions);
+				surveyResults.removeAllViews();
 				surveyResults.addView(t);
 				break;	
 			case "d": //Populate survey questions
