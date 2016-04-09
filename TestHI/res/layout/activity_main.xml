@@ -29,11 +29,26 @@
             android:padding="5dp" >
         </FrameLayout>
 
-        <Button
-            android:id="@+id/button1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next" />
+			android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnHealthInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Next" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/helpquestionmark" 
+                android:onClick="callForHelp"/>
+
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar1"

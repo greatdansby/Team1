@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -60,6 +61,10 @@ public class MainActivity extends TabActivity {
 	    tabHost.addTab(tab2);
 	    tabHost.addTab(tab3);
 	    
+	}
+	
+	public void callForHelp(View v){
+		
 	}
 
 }

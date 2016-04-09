@@ -1,6 +1,6 @@
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="vertical" >
 
         <HorizontalScrollView
@@ -18,64 +18,83 @@
 
         </HorizontalScrollView>
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
+            android:layout_height="fill_parent"
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" >
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/btnHealthInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR(1)"
+                    android:text="MY HEALTH INFO" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btnConditions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR(2)"
+                    android:text="MY CONDITIONS" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnProcedures"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR(3)"
+                    android:text="MY PROCEDURES" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btnDoctorsVisits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR(4)"
+                    android:text="MY DOCTORS VISITS" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/btnMedications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR(5)"
+                    android:text="MY MEDICATIONS" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btnTestResults"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR(6)"
+                    android:text="MY TEST RESULTS" />
+
+                <Button
+                    android:id="@+id/btn3rdParty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR(7)"
+                    android:text="MY 3RD PARTY DATA" />
 
             </LinearLayout>
 
             <ScrollView
                 android:id="@+id/scrollView1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="fill_parent"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:scrollbarStyle="insideInset" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,22 +107,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/survey_button"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo1"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Body Weight is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo1Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo1Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo1Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo1Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button08"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo1Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(1)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo1Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(1)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -111,22 +188,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/survey_name"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo2"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current BMI is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo2Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo2Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo2Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo2Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button07"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo2Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(2)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo2Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(2)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,23 +269,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/TextView06"
-                            style="@drawable/box"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo3"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Body Height is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo3Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo3Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo3Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo3Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button06"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo3Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(3)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo3Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(3)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -158,22 +350,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/TextView05"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo4"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Body temperature is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo4Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo4Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo4Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo4Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button05"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo4Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(4)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo4Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(4)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -181,22 +431,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/TextView04"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo5"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Diastolic blood pressure is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo5Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo5Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo5Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo5Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button04"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo5Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(5)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo5Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(5)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -204,22 +512,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/TextView03"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo6"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Systolic blood pressure is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo6Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo6Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo6Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo6Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button03"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo6Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(6)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo6Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(6)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -227,22 +593,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/TextView02"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo7"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Heart rate is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo7Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo7Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo7Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo7Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button02"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo7Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(7)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo7Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(7)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -250,22 +674,80 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/TextView01"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo8"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Respiratory rate is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo8Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtHealthInfo8Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo8Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtHealthInfo8Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button01"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtHealthInfo8Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(8)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtHealthInfo8Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(8)"
+                            android:text="Flag" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -273,22 +755,322 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box" >
 
-                        <TextView
-                            android:id="@+id/textView2"
+                        <LinearLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="left"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="TextView" />
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtConditions1"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Body Weight is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions1Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions1Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtConditions1Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtConditions1Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
 
                         <Button
-                            android:id="@+id/button7"
-                            style="?android:attr/buttonStyleSmall"
+                            android:id="@+id/txtConditions1Chart"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(9)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtConditions1Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(9)"
+                            android:text="Flag" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/box" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtConditions2"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Body Weight is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions2Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions2Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtConditions2Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtConditions2Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/txtConditions2Chart"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(10)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtConditions2Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(10)"
+                            android:text="Flag" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/box" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtConditions3"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Body Weight is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions3Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions3Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtConditions3Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtConditions3Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/txtConditions3Chart"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(11)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtConditions3Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(11)"
+                            android:text="Flag" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/box" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/txtConditions4"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="My current Body Weight is: "
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions4Value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:text="170"
+                                    android:textSize="25sp" />
+
+                                <TextView
+                                    android:id="@+id/txtConditions4Units"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="kg"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtConditions4Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="5/12/2016"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/txtConditions4Desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/txtConditions4Chart"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts(12)"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/txtConditions4Flag"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle(12)"
+                            android:text="Flag" />
 
                     </LinearLayout>
 

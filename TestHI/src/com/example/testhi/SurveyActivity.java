@@ -65,7 +65,7 @@ public class SurveyActivity extends Activity implements myInterface {
 				            child = (LinearLayout) inflater.inflate(R.layout.survey, null);
 				            TextView txt = (TextView) child.findViewById(R.id.survey_name);
 				            txt.setText(p.getString("survey_name"));
-				            TextView btn = (TextView) child.findViewById(R.id.survey_button);
+				            TextView btn = (TextView) child.findViewById(R.id.txtHealthInfo1);
 				            btn.setTag(p.getInt("id"));
 				            switch(p.getInt("survey_taken")){
 				            	case 0:
@@ -124,6 +124,8 @@ public class SurveyActivity extends Activity implements myInterface {
 			        }
 			        TextView t = new TextView(this);
 					t.setText("Get Results");
+					t.setBackgroundColor(3);
+					t.setBackgroundResource(R.drawable.roundedcorners);
 					t.setOnClickListener(new OnClickListener(){
 
 						@Override
@@ -140,9 +142,12 @@ public class SurveyActivity extends Activity implements myInterface {
 				break;
 			case "c": //Populate survey results
 				TextView t = new TextView(this);
-				t.setText(output);
+				TextView s = new TextView(this);
+				s.setText("SURVEY RESULTS:/n");
+				t.setText(android.text.Html.fromHtml(output));
 				LinearLayout surveyResults = (LinearLayout) findViewById(R.id.surveyQuestions);
 				surveyResults.removeAllViews();
+				surveyResults.addView(s);
 				surveyResults.addView(t);
 				break;	
 			case "d": //Populate survey questions

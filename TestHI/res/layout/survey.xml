@@ -17,7 +17,7 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/survey_button"
+        android:id="@+id/txtHealthInfo1"
         android:layout_width="100dp"
         android:layout_height="fill_parent"
         android:layout_margin="15dp"

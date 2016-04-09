@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-           android:layout_width="fill_parent"
-           android:layout_height="150dp"
-           android:layout_weight="0" 
-           android:orientation="vertical" >
+    android:layout_width="fill_parent"
+    android:layout_height="150dp"
+    android:layout_weight="0"
+    android:orientation="vertical"
+    android:padding="10dp" >
 
            <TextView
                android:id="@+id/questionText"
                android:layout_width="fill_parent"
                android:layout_height="wrap_content"
+               android:layout_margin="20dp"
                android:layout_weight="1"
                android:text="Connect to 3rd party applications such as FitBit &amp; 23andMe to see new statistics on your health."
                android:textSize="25sp" />
@@ -17,6 +19,7 @@
                android:id="@+id/answerDropdown"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:layout_weight="1" />
+               android:layout_weight="1"
+               android:background="@drawable/roundedcorners" />
 
 </LinearLayout>
