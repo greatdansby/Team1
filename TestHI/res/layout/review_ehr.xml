@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="scrollEHR(1)"
+                    android:onClick="scrollEHR"
                     android:text="MY HEALTH INFO" />
 
                 <Button
@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="scrollEHR(2)"
+                    android:onClick="scrollEHR"
                     android:text="MY CONDITIONS" />
 
                 <Button
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="scrollEHR(3)"
+                    android:onClick="scrollEHR"
                     android:text="MY PROCEDURES" />
 
                 <Button
@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="scrollEHR(4)"
+                    android:onClick="scrollEHR"
                     android:text="MY DOCTORS VISITS" />
 
                 <Button
@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="scrollEHR(5)"
+                    android:onClick="scrollEHR"
                     android:text="MY MEDICATIONS" />
 
                 <Button
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="scrollEHR(6)"
+                    android:onClick="scrollEHR"
                     android:text="MY TEST RESULTS" />
 
                 <Button
@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:onClick="scrollEHR(7)"
+                    android:onClick="scrollEHR"
                     android:text="MY 3RD PARTY DATA" />
 
             </LinearLayout>
@@ -168,7 +168,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(1)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -178,7 +178,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(1)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -238,7 +238,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Body mass index or BMI, is a ratio of weight to height used to broadly define a 'healthy weight'. A BMI of 25 is considered healthy, while a BMI of less than 15 is considered underweight and a BMI of greater than 25 is considered overweight."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -249,7 +249,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(2)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -259,7 +259,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(2)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -319,7 +319,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Body height is a measure of your body's height."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -330,7 +330,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(3)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -340,7 +340,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(3)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -400,7 +400,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Body temperature is a measure of your body's temperature. 98.6 degrees Farenheit is considered average."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -411,7 +411,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(4)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -421,7 +421,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(4)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -481,7 +481,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Diastolic blood pressure is.."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -492,7 +492,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(5)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -502,7 +502,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(5)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -562,7 +562,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Heart rate is a count of heart beats per minute. Resting heart rates vary by age, but can be an indicator of good heart health. For your age, a rate of X is considered healthy."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -573,7 +573,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(6)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -583,7 +583,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(6)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -643,7 +643,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Systolic blood pressure is..."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -654,7 +654,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(7)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -664,7 +664,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(7)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -724,7 +724,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Respatory rate is..."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -735,7 +735,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(8)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -745,7 +745,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(8)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -816,7 +816,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(9)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -826,7 +826,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(9)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -897,7 +897,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(10)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -907,7 +907,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(10)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -978,7 +978,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(11)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -988,7 +988,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(11)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>
@@ -1059,7 +1059,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/yellowbutton"
-                            android:onClick="scrollCharts(12)"
+                            android:onClick="scrollCharts"
                             android:text="Chart" />
 
                         <Button
@@ -1069,7 +1069,7 @@
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/redbutton"
-                            android:onClick="flagToggle(12)"
+                            android:onClick="flagToggle"
                             android:text="Flag" />
 
                     </LinearLayout>

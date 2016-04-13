@@ -12,18 +12,26 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import android.R.color;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class ReviewEhrActivity extends Activity implements myInterface {
 	
-	fetchDataFromAppServer getChartData = new fetchDataFromAppServer();
+	fetchDataFromAppServer getAnalyticData = new fetchDataFromAppServer();
+	fetchDataFromAppServer getObservationData = new fetchDataFromAppServer();
+	fetchDataFromAppServer getConditionData = new fetchDataFromAppServer();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +41,14 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 	protected void onStart(){
 		super.onStart();
 		
-		getChartData.delegate = this;
-		getChartData.execute("a","Analytics/Risks/?patientId="+MainActivity.user.getTag());
+		getAnalyticData.delegate = this;
+		getAnalyticData.execute("a","Analytics/Risks/?patientId="+MainActivity.user.getTag());
+		
+		getObservationData.delegate = this;
+		getObservationData.execute("b","GetObservationsFHIR_SQL/?patientId="+MainActivity.user.getTag());
+		
+		getConditionData.delegate = this;
+		getConditionData.execute("c","GetConditionsFHIR_SQL/?patientId="+MainActivity.user.getTag());
 	}
 	
 	@SuppressLint("NewApi")
@@ -49,7 +63,10 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 		int records = 0;
 				
 		switch(id) {
-			case "a": //Add charts
+			case "a": //Add analytics charts
+				
+				
+				//Parse JSON
 				
 				try {
 					allInfo = new JSONObject(output);
@@ -61,48 +78,440 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 					e.printStackTrace();
 				}
 				
-				//data = allInfo.getJSONObject("results");
+				//Create data entries
 				
-		ArrayList<BarEntry> entries = new ArrayList<>();
-		ArrayList<String> labels = new ArrayList<String>();
-		for (int i=0; i < records; i++){
-			JSONObject data;
+				ArrayList<BarEntry> entries = new ArrayList<>();
+				ArrayList<String> labels = new ArrayList<String>();
+				for (int i=0; i < records; i++){
+					JSONObject data;
+					try {
+						data = (JSONObject) dataArray.get(i);
+						entries.add(new BarEntry((float) data.getInt("riskPercentage"), i));
+						labels.add(data.getString("disease"));
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+		
+				//Configure charts
+				
+				BarDataSet dataset = new BarDataSet(entries, "Risk Percentage");
+				
+				BarChart chart = new BarChart(this);
+				LinearLayout myCharts = (LinearLayout) findViewById(R.id.chartView);
+				myCharts.addView(chart,700,325);
+				
+				BarData barData = new BarData(labels, dataset);
+				chart.setData(barData);
+				
+				chart.setDescription("Disease Risk Assessment");
+				dataset.setColors(ColorTemplate.COLORFUL_COLORS);
+				chart.animateY(5000);
+				break;
+		
+			case "b":
+				
+				//Add observation data
+				JSONArray j = null;
+				
+				try {
+					j = new JSONArray(output);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//Capture observations (Body weight Measured, Body mass index (BMI) [Ratio], Body height, Body temperature, Diastolic blood pressure, Heart rate, Systolic blood pressure, Respiratory rate)
+				
+				JSONArray data1 = new JSONArray(); //Body weight Measured
+				JSONArray data2 = new JSONArray(); //Body mass index (BMI) [Ratio]
+				JSONArray data3 = new JSONArray(); //Body height
+				JSONArray data4 = new JSONArray(); //Body temperature
+				JSONArray data5 = new JSONArray(); //Diastolic blood pressure
+				JSONArray data6 = new JSONArray(); //Heart rate
+				JSONArray data7 = new JSONArray(); //Systolic blood pressure
+				JSONArray data8 = new JSONArray(); //Respiratory rate
+				
+				//Create data entries
+				
+				for (int i=0; i < j.length(); i++){
+					
+					try {
+						switch(((JSONObject) j.get(i)).getString("Observation")){
+							case "Body weight Measured":
+								data1.put(j.get(i));
+								break;
+							case "Body mass index (BMI) [Ratio]":
+								data2.put(j.get(i));
+								break;
+							case "Body height":
+								data3.put(j.get(i));
+								break;
+							case "Body temperature":
+								data4.put(j.get(i));
+								break;
+							case "Diastolic blood pressure":
+								data5.put(j.get(i));
+								break;
+							case "Heart rate":
+								data6.put(j.get(i));
+								break;
+							case "Systolic blood pressure":
+								data7.put(j.get(i));
+								break;
+							case "Respiratory rate":
+								data8.put(j.get(i));
+								break;							
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+						
+				//Sort arrays by date, populate views with latest record
+				try {
+					TextView OB1 = (TextView) this.findViewById(R.id.txtHealthInfo1);			
+					OB1.setText(((JSONObject) data1.get(0)).getString("Observation") + ":");
+					TextView OB1Value = (TextView) this.findViewById(R.id.txtHealthInfo1Value);
+					OB1Value.setText(((JSONObject) data1.get(0)).getString("Value"));
+					TextView OB1Units = (TextView) this.findViewById(R.id.txtHealthInfo1Units);
+					OB1Units.setText(((JSONObject) data1.get(0)).getString("Unit"));
+					TextView OB1Date = (TextView) this.findViewById(R.id.txtHealthInfo1Date);
+					OB1Date.setText(((JSONObject) data1.get(0)).getString("Date"));
+					
+					TextView OB2 = (TextView) this.findViewById(R.id.txtHealthInfo2);
+					OB2.setText(((JSONObject) data2.get(0)).getString("Observation") + ":");
+					TextView OB2Value = (TextView) this.findViewById(R.id.txtHealthInfo2Value);
+					OB2Value.setText(((JSONObject) data2.get(0)).getString("Value"));
+					TextView OB2Units = (TextView) this.findViewById(R.id.txtHealthInfo2Units);
+					OB2Units.setText(((JSONObject) data2.get(0)).getString("Unit"));
+					TextView OB2Date = (TextView) this.findViewById(R.id.txtHealthInfo2Date);
+					OB2Date.setText(((JSONObject) data2.get(0)).getString("Date"));
+					
+					TextView OB3 = (TextView) this.findViewById(R.id.txtHealthInfo3);
+					OB3.setText(((JSONObject) data3.get(0)).getString("Observation") + ":");
+					TextView OB3Value = (TextView) this.findViewById(R.id.txtHealthInfo3Value);
+					OB3Value.setText(((JSONObject) data3.get(0)).getString("Value"));
+					TextView OB3Units = (TextView) this.findViewById(R.id.txtHealthInfo3Units);
+					OB3Units.setText(((JSONObject) data3.get(0)).getString("Unit"));
+					TextView OB3Date = (TextView) this.findViewById(R.id.txtHealthInfo3Date);
+					OB3Date.setText(((JSONObject) data3.get(0)).getString("Date"));
+					
+					TextView OB4 = (TextView) this.findViewById(R.id.txtHealthInfo4);
+					OB4.setText(((JSONObject) data4.get(0)).getString("Observation") + ":");
+					TextView OB4Value = (TextView) this.findViewById(R.id.txtHealthInfo4Value);
+					OB4Value.setText(((JSONObject) data4.get(0)).getString("Value"));
+					TextView OB4Units = (TextView) this.findViewById(R.id.txtHealthInfo4Units);
+					OB4Units.setText(((JSONObject) data4.get(0)).getString("Unit"));
+					TextView OB4Date = (TextView) this.findViewById(R.id.txtHealthInfo4Date);
+					OB4Date.setText(((JSONObject) data4.get(0)).getString("Date"));
+					
+					TextView OB5 = (TextView) this.findViewById(R.id.txtHealthInfo5);
+					OB5.setText(((JSONObject) data5.get(0)).getString("Observation") + ":");
+					TextView OB5Value = (TextView) this.findViewById(R.id.txtHealthInfo5Value);
+					OB5Value.setText(((JSONObject) data5.get(0)).getString("Value"));
+					TextView OB5Units = (TextView) this.findViewById(R.id.txtHealthInfo5Units);
+					OB5Units.setText(((JSONObject) data5.get(0)).getString("Unit"));
+					TextView OB5Date = (TextView) this.findViewById(R.id.txtHealthInfo5Date);
+					OB5Date.setText(((JSONObject) data5.get(0)).getString("Date"));
+					
+					TextView OB6 = (TextView) this.findViewById(R.id.txtHealthInfo6);
+					OB6.setText(((JSONObject) data6.get(0)).getString("Observation") + ":");
+					TextView OB6Value = (TextView) this.findViewById(R.id.txtHealthInfo6Value);
+					OB6Value.setText(((JSONObject) data6.get(0)).getString("Value"));
+					TextView OB6Units = (TextView) this.findViewById(R.id.txtHealthInfo6Units);
+					OB6Units.setText(((JSONObject) data6.get(0)).getString("Unit"));
+					TextView OB6Date = (TextView) this.findViewById(R.id.txtHealthInfo6Date);
+					OB6Date.setText(((JSONObject) data6.get(0)).getString("Date"));
+					
+					TextView OB7 = (TextView) this.findViewById(R.id.txtHealthInfo7);
+					OB7.setText(((JSONObject) data7.get(0)).getString("Observation") + ":");
+					TextView OB7Value = (TextView) this.findViewById(R.id.txtHealthInfo7Value);
+					OB7Value.setText(((JSONObject) data7.get(0)).getString("Value"));
+					TextView OB7Units = (TextView) this.findViewById(R.id.txtHealthInfo7Units);
+					OB7Units.setText(((JSONObject) data7.get(0)).getString("Unit"));
+					TextView OB7Date = (TextView) this.findViewById(R.id.txtHealthInfo7Date);
+					OB7Date.setText(((JSONObject) data7.get(0)).getString("Date"));
+					
+					TextView OB8 = (TextView) this.findViewById(R.id.txtHealthInfo8);
+					OB8.setText(((JSONObject) data8.get(0)).getString("Observation") + ":");
+					TextView OB8Value = (TextView) this.findViewById(R.id.txtHealthInfo8Value);
+					OB8Value.setText(((JSONObject) data8.get(0)).getString("Value"));
+					TextView OB8Units = (TextView) this.findViewById(R.id.txtHealthInfo8Units);
+					OB8Units.setText(((JSONObject) data8.get(0)).getString("Unit"));
+					TextView OB8Date = (TextView) this.findViewById(R.id.txtHealthInfo8Date);
+					OB8Date.setText(((JSONObject) data8.get(0)).getString("Date"));
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+						
+				//Load chart data
+				
+				LinearLayout myOBCharts = (LinearLayout) findViewById(R.id.chartView);
+
+				addChart(myOBCharts,data1,"Body Weight", "txtHealthInfo1Chart");
+				addChart(myOBCharts,data1,"Body Mass Index (BMI)", "txtHealthInfo2Chart");
+				addChart(myOBCharts,data1,"Body Height", "txtHealthInfo3Chart");
+				addChart(myOBCharts,data1,"Body Temperature", "txtHealthInfo4Chart");
+				addChart(myOBCharts,data1,"Diastolic Blood Pressure", "txtHealthInfo5Chart");
+				addChart(myOBCharts,data1,"Heart Rate", "txtHealthInfo6Chart");
+				addChart(myOBCharts,data1,"Systolic blood pressure", "txtHealthInfo7Chart");
+				addChart(myOBCharts,data1,"Respiratory rate", "txtHealthInfo8Chart");				
+				
+				break;
+			case "c":
+				
+				//Add condition data
+				
+				JSONArray c = null;
+				
+				try {
+					c = new JSONArray(output);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//Capture conditions (Essential hypertension, Dizzy spells, Lightheadedness, Morning headache)
+
+				JSONArray dataC1 = new JSONArray(); //Essential hypertension
+				JSONArray dataC2 = new JSONArray(); //Dizzy spells
+				JSONArray dataC3 = new JSONArray(); //Lightheadedness
+				JSONArray dataC4 = new JSONArray(); //Morning headache
+
+				
+				//Create data entries
+				
+				for (int i=0; i < c.length(); i++){
+					
+					try {
+						switch(((JSONObject) c.get(i)).getString("Condition")){
+							case " Essential hypertension ":
+								dataC1.put(c.get(i));
+								break;
+							case " Dizzy spells ":
+								dataC2.put(c.get(i));
+								break;
+							case " Lightheadedness ":
+								dataC3.put(c.get(i));
+								break;
+							case " Morning headache ":
+								dataC4.put(c.get(i));
+								break;	
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+						
+				//Sort arrays by date, populate views with latest record
+				try {
+
+					TextView C1 = (TextView) this.findViewById(R.id.txtConditions1);
+					C1.setText(((JSONObject) dataC1.get(0)).getString("Disease"));
+					TextView C1Value = (TextView) this.findViewById(R.id.txtConditions1Value);
+					C1Value.setText("");
+					TextView C1Units = (TextView) this.findViewById(R.id.txtConditions1Units);
+					C1Units.setText("");
+					TextView C1Date = (TextView) this.findViewById(R.id.txtConditions1Date);
+					C1Date.setText(((JSONObject) dataC1.get(0)).getString("Date"));
+					
+					TextView C2 = (TextView) this.findViewById(R.id.txtConditions2);
+					C2.setText(((JSONObject) dataC2.get(0)).getString("Disease"));
+					TextView C2Value = (TextView) this.findViewById(R.id.txtConditions2Value);
+					C2Value.setText("");
+					TextView C2Units = (TextView) this.findViewById(R.id.txtConditions2Units);
+					C2Units.setText("");
+					TextView C2Date = (TextView) this.findViewById(R.id.txtConditions2Date);
+					C2Date.setText(((JSONObject) dataC2.get(0)).getString("Date"));
+					
+					TextView C3 = (TextView) this.findViewById(R.id.txtConditions3);
+					C3.setText(((JSONObject) dataC3.get(0)).getString("Disease"));
+					TextView C3Value = (TextView) this.findViewById(R.id.txtConditions3Value);
+					C3Value.setText("");
+					TextView C3Units = (TextView) this.findViewById(R.id.txtConditions3Units);
+					C3Units.setText("");
+					TextView C3Date = (TextView) this.findViewById(R.id.txtConditions3Date);
+					C3Date.setText(((JSONObject) dataC3.get(0)).getString("Date"));
+					
+					TextView C4 = (TextView) this.findViewById(R.id.txtConditions4);
+					C4.setText(((JSONObject) dataC4.get(0)).getString("Disease"));
+					TextView C4Value = (TextView) this.findViewById(R.id.txtConditions4Value);
+					C4Value.setText("");
+					TextView C4Units = (TextView) this.findViewById(R.id.txtConditions4Units);
+					C4Units.setText("");
+					TextView C4Date = (TextView) this.findViewById(R.id.txtConditions4Date);
+					C4Date.setText(((JSONObject) dataC4.get(0)).getString("Date"));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//Load chart data
+				
+				LinearLayout mCCharts = (LinearLayout) findViewById(R.id.chartView);
+
+				addChart(mCCharts,dataC1,"Essential hypertension", "txtConditions1Chart");
+				addChart(mCCharts,dataC2,"Dizzy spells", "txtConditions2Chart");
+				addChart(mCCharts,dataC3,"Lightheadedness", "txtConditions3Chart");
+				addChart(mCCharts,dataC4,"Morning headache", "txtConditions4Chart");
+				
+				break;
+				
+	}
+	}
+	
+	public void addChart(LinearLayout myCharts, JSONArray chartData, String description, String tag){
+		JSONObject data = null;
+		ArrayList<BarEntry> entriesOB = new ArrayList<>();
+		ArrayList<String> labelsOB = new ArrayList<String>();
+		
+		for (int i=0; i < chartData.length(); i++){
 			try {
-				data = (JSONObject) dataArray.get(i);
-				entries.add(new BarEntry((float) data.getInt("riskPercentage"), i));
-				labels.add(data.getString("disease"));
+				data = (JSONObject) chartData.get(i);
+				entriesOB.add(new BarEntry((float) data.getInt("Value"), i));
+			labelsOB.add(data.getString("Date"));
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		BarDataSet dataset = new BarDataSet(entriesOB, "Value");
 		
-		BarDataSet dataset = new BarDataSet(entries, "Risk Percentage");
-		
-		BarChart chart = new BarChart(this);
-		BarChart chart2 = new BarChart(this);
-		LinearLayout myCharts = (LinearLayout) findViewById(R.id.chartView);
-		myCharts.addView(chart,700,325);
-		myCharts.addView(chart2,700,325);
-		
-		BarData barData = new BarData(labels, dataset);
-		chart.setData(barData);
-		chart2.setData(barData);
-		
-		chart.setDescription("Disease Risk Assessment");
+		BarChart chart1 = new BarChart(this);
+		chart1.setTag(tag);				
+		myCharts.addView(chart1,700,325);				
+		BarData barData = new BarData(labelsOB, dataset);
+		chart1.setData(barData);				
+		chart1.setDescription(description);
 		dataset.setColors(ColorTemplate.COLORFUL_COLORS);
-		chart.animateY(5000);
-		break;
+		chart1.animateY(5000);
 	}
-	}
-	public void flagToggle(View v, Integer i){
+	
+	public void flagToggle(View v){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("Record flagged for review with doctor")
+		       .setCancelable(false)
+		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		                //do things
+		           }
+		       });
+		AlertDialog alert = builder.create();
+		alert.show();
 		
+		TextView t = (TextView) v;
+		switch (v.getId()) {
+	    case (R.id.txtHealthInfo1Flag):
+	    	
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtHealthInfo2Flag):
+	    	
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtHealthInfo3Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtHealthInfo4Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtHealthInfo5Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtHealthInfo6Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtHealthInfo7Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtHealthInfo8Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtConditions1Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtConditions2Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtConditions3Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+	    case (R.id.txtConditions4Flag):
+
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+		}
 	}
-	public void scrollCharts(View v, Integer i){
-		
+	public void scrollCharts(View v){
+		switch (v.getId()) {
+	    case (R.id.txtHealthInfo1Chart):
+	    	final HorizontalScrollView s = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo1Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+    		
+		}
 	}
-	public void scrollEHR(View v, Integer i){
-		
+	public void scrollEHR(View v){
+		switch (v.getId()) {
+	    case (R.id.btnHealthInfo):
+	    	findViewById(R.id.scrollView1).scrollTo(0, (int) findViewById(R.id.txtHealthInfo1).getY());
+	    	break;
+	    case (R.id.btnConditions):
+	    	
+	    	ScrollView s = (ScrollView) findViewById(R.id.scrollView1);	    	
+	    	LinearLayout x1 = (LinearLayout) findViewById(R.id.txtConditions1).getParent();
+	    	LinearLayout x2 = (LinearLayout) x1.getParent();
+	    	LinearLayout x3 = (LinearLayout) x2.getParent();
+	    	LinearLayout x4 = (LinearLayout) x3.getParent();
+	    	s.smoothScrollTo(0, (int) x3.getTop());
+	    	break;
+	    	
+	    case (R.id.btnDoctorsVisits):
+	    	findViewById(R.id.scrollView1).scrollTo(0, 0);
+	    	break;
+	    case (R.id.btnProcedures):
+	    	findViewById(R.id.scrollView1).scrollTo(0, 0);
+	    	break;
+	    case (R.id.btnMedications):
+	    	findViewById(R.id.scrollView1).scrollTo(0, 0);
+	    	break;
+	    case (R.id.btnTestResults):
+	    	findViewById(R.id.scrollView1).scrollTo(0, 0);
+	    	break;
+	    case (R.id.btn3rdParty):
+	    	findViewById(R.id.scrollView1).scrollTo(0, 0);
+	    	break;
+		}
 	}
 
 }

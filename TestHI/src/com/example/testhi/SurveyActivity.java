@@ -123,9 +123,11 @@ public class SurveyActivity extends Activity implements myInterface {
 			            parent.addView(child);
 			        }
 			        TextView t = new TextView(this);
+					t.setGravity(Gravity.CENTER);
+					t.setTextSize(30f);
 					t.setText("Get Results");
 					t.setBackgroundColor(3);
-					t.setBackgroundResource(R.drawable.roundedcorners);
+					t.setBackgroundResource(R.drawable.yellowbutton);
 					t.setOnClickListener(new OnClickListener(){
 
 						@Override
@@ -143,7 +145,9 @@ public class SurveyActivity extends Activity implements myInterface {
 			case "c": //Populate survey results
 				TextView t = new TextView(this);
 				TextView s = new TextView(this);
-				s.setText("SURVEY RESULTS:/n");
+				s.setTextSize(30f);
+				s.setText("SURVEY RESULTS:");
+				t.setTextSize(18f);
 				t.setText(android.text.Html.fromHtml(output));
 				LinearLayout surveyResults = (LinearLayout) findViewById(R.id.surveyQuestions);
 				surveyResults.removeAllViews();

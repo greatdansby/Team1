@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
@@ -32,7 +33,6 @@ public class MainActivity extends TabActivity {
 
 	    tab0.setIndicator("Home");
 	    tab0.setContent(new Intent(this,HomeActivity.class));
-		
 	    
 	    tab1.setIndicator("My Records & Stats");
 	    tab1.setContent(new Intent(this,ReviewEhrActivity.class));
@@ -60,6 +60,13 @@ public class MainActivity extends TabActivity {
 	    tabHost.addTab(tab1);
 	    tabHost.addTab(tab2);
 	    tabHost.addTab(tab3);
+	    
+	    TabWidget tw = (TabWidget)tabHost.findViewById(android.R.id.tabs);
+	    for(int i=0; i<4; i++){
+		    View tabView = tw.getChildTabViewAt(i);
+		    TextView tv = (TextView)tabView.findViewById(android.R.id.title);
+		    tv.setTextSize(20);
+		    }
 	    
 	}
 	
