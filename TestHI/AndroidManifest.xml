@@ -43,6 +43,9 @@
         <activity
             android:name=".ConnectActivity">
         </activity>
+        <activity
+            android:name=".Pop" android:theme="@style/AppTheme.CustomTheme" >
+        </activity>
     </application>
 
 </manifest>

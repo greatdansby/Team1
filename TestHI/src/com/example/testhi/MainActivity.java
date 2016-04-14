@@ -5,6 +5,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
@@ -68,6 +69,15 @@ public class MainActivity extends TabActivity {
 		    tv.setTextSize(20);
 		    }
 	    
+	    Button bPopup = (Button) findViewById(R.id.btnPopup);
+	    bPopup.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, Pop.class));
+				
+			}
+		});
 	}
 	
 	public void callForHelp(View v){

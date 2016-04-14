@@ -36,10 +36,16 @@
 
             <Button
                 android:id="@+id/btnHealthInfo"
-                android:layout_width="match_parent"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                android:text="Next" />
+
+            <Button
+                android:id="@+id/btnPopup"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Next" />
+                android:text="Pop" />
 
             <ImageView
                 android:id="@+id/imageView1"
