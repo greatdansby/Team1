@@ -82,6 +82,8 @@ public class MainActivity extends TabActivity {
 	
 	public void callForHelp(View v){
 		
+		TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+		Integer currentTab = tabHost.getCurrentTab();
 	}
 
 	// Add comment to test push
