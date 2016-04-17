@@ -1,15 +1,20 @@
 package com.example.testhi;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import android.R.color;
@@ -100,7 +105,7 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				
 				BarChart chart = new BarChart(this);
 				LinearLayout myCharts = (LinearLayout) findViewById(R.id.chartView);
-				myCharts.addView(chart,700,325);
+				myCharts.addView(chart,((View) myCharts.getParent()).getWidth(),myCharts.getHeight());
 				
 				BarData barData = new BarData(labels, dataset);
 				chart.setData(barData);
@@ -367,7 +372,7 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 	
 	public void addChart(LinearLayout myCharts, JSONArray chartData, String description, String tag){
 		JSONObject data = null;
-		ArrayList<BarEntry> entriesOB = new ArrayList<>();
+		List<Entry> entriesOB = new ArrayList<>();
 		ArrayList<String> labelsOB = new ArrayList<String>();
 		
 		for (int i=0; i < chartData.length(); i++){
@@ -380,12 +385,12 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				e.printStackTrace();
 			}
 		}
-		BarDataSet dataset = new BarDataSet(entriesOB, "Value");
+		LineDataSet dataset = new LineDataSet(entriesOB, "Value");
 		
-		BarChart chart1 = new BarChart(this);
+		LineChart chart1 = new LineChart(this);
 		chart1.setTag(tag);				
-		myCharts.addView(chart1,700,325);				
-		BarData barData = new BarData(labelsOB, dataset);
+		myCharts.addView(chart1,((View) myCharts.getParent()).getWidth(),((View) myCharts.getParent()).getHeight());			
+		LineData barData = new LineData(labelsOB, dataset);
 		chart1.setData(barData);				
 		chart1.setDescription(description);
 		dataset.setColors(ColorTemplate.COLORFUL_COLORS);

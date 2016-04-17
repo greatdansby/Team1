@@ -11,8 +11,9 @@
             <LinearLayout
                 android:id="@+id/chartView"
                 android:layout_width="500dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
 
             </LinearLayout>
 
@@ -37,7 +38,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY HEALTH INFO" />
+                    android:text="MY HEALTH INFO"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/btnConditions"
@@ -45,7 +47,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY CONDITIONS" />
+                    android:text="MY CONDITIONS"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/btnProcedures"
@@ -53,7 +56,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY PROCEDURES" />
+                    android:text="MY PROCEDURES"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/btnDoctorsVisits"
@@ -61,7 +65,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY DOCTORS VISITS" />
+                    android:text="MY DOCTORS VISITS"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/btnMedications"
@@ -69,7 +74,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY MEDICATIONS" />
+                    android:text="MY MEDICATIONS"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/btnTestResults"
@@ -77,7 +83,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY TEST RESULTS" />
+                    android:text="MY TEST RESULTS"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/btn3rdParty"
@@ -85,7 +92,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY 3RD PARTY DATA" />
+                    android:text="MY 3RD PARTY DATA"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -481,7 +489,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Diastolic blood pressure is.."
+                                android:text="The diastolic blood pressure number or the bottom number indicates the pressure in the arteries when the heart rests between beats. A normal diastolic blood pressure number is less than 80. A diastolic blood pressure between 80 and 89 indicates prehypertension."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -643,7 +651,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Systolic blood pressure is..."
+                                android:text="The systolic blood pressure number or the top number indicates the pressure in the arteries when the heart contracts. A normal systolic blood pressure number is less than 120."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
