@@ -69,7 +69,9 @@ public class MainActivity extends TabActivity {
 		    tv.setTextSize(20);
 		    }
 	    
+	    /*
 	    Button bPopup = (Button) findViewById(R.id.btnPopup);
+	    
 	    bPopup.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -78,15 +80,34 @@ public class MainActivity extends TabActivity {
 				
 			}
 		});
+		*/
 	}
 	
 	public void callForHelp(View v){
 		
 		TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
 		Integer currentTab = tabHost.getCurrentTab();
+		
+		System.out.println("currentTab:" + currentTab);
 
+		
+		switch (currentTab)
+		{
+		case 0:
+			startActivity(new Intent(MainActivity.this, MainHelp.class));
+			break;
+		case 1:
+			startActivity(new Intent(MainActivity.this, MainHelp.class));
+			// startActivity(new Intent(MainActivity.this, ReviewHelp.class));
+			break;
+		case 2:
+			startActivity(new Intent(MainActivity.this, MainHelp.class));
+			// startActivity(new Intent(MainActivity.this, ReviewHelp.class));
+			break;
+		case 3:
+			startActivity(new Intent(MainActivity.this, MainHelp.class));
+			// startActivity(new Intent(MainActivity.this, ReviewHelp.class));
+			break;
+		}
 	}
-
-	// Add comment to test push
-	
 }

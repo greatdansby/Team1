@@ -32,28 +32,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-			android:orientation="horizontal">
+            android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/btnHealthInfo"
                 android:layout_width="179dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.73"
                 android:text="Next" />
-
-            <Button
-                android:id="@+id/btnPopup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Pop" />
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/helpquestionmark" 
-                android:onClick="callForHelp"/>
-
+                android:onClick="callForHelp"
+                android:src="@drawable/helpquestionmark" />
         </LinearLayout>
 
         <ProgressBar
