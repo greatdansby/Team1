@@ -46,6 +46,15 @@
         <activity
             android:name=".MainHelp" android:theme="@style/AppTheme.CustomTheme" >
         </activity>
+        <activity
+            android:name=".ReviewHelp" android:theme="@style/AppTheme.CustomTheme" >
+        </activity>
+                <activity
+            android:name=".SurveyHelp" android:theme="@style/AppTheme.CustomTheme" >
+        </activity>
+                <activity
+            android:name=".ConnectHelp" android:theme="@style/AppTheme.CustomTheme" >
+        </activity>
     </application>
 
 </manifest>

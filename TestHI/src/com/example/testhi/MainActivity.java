@@ -67,20 +67,7 @@ public class MainActivity extends TabActivity {
 		    View tabView = tw.getChildTabViewAt(i);
 		    TextView tv = (TextView)tabView.findViewById(android.R.id.title);
 		    tv.setTextSize(20);
-		    }
-	    
-	    /*
-	    Button bPopup = (Button) findViewById(R.id.btnPopup);
-	    
-	    bPopup.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, Pop.class));
-				
-			}
-		});
-		*/
+	    }
 	}
 	
 	public void callForHelp(View v){
@@ -97,16 +84,13 @@ public class MainActivity extends TabActivity {
 			startActivity(new Intent(MainActivity.this, MainHelp.class));
 			break;
 		case 1:
-			startActivity(new Intent(MainActivity.this, MainHelp.class));
-			// startActivity(new Intent(MainActivity.this, ReviewHelp.class));
+			startActivity(new Intent(MainActivity.this, ReviewHelp.class));
 			break;
 		case 2:
-			startActivity(new Intent(MainActivity.this, MainHelp.class));
-			// startActivity(new Intent(MainActivity.this, ReviewHelp.class));
+			startActivity(new Intent(MainActivity.this, SurveyHelp.class));
 			break;
 		case 3:
-			startActivity(new Intent(MainActivity.this, MainHelp.class));
-			// startActivity(new Intent(MainActivity.this, ReviewHelp.class));
+			startActivity(new Intent(MainActivity.this, ConnectHelp.class));
 			break;
 		}
 	}
