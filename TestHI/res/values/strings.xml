@@ -9,5 +9,10 @@
     <string name="title_activity_survey_activity">Surveys &amp; Quizes</string>
     <string name="title_activity_thirdparty_activity">3rd Party Apps</string>
     <string name="title_activity_home">HomeActivity</string>
+        
+    <string name="main_help_text">
+	<big><b>Line one</b></big>\n
+	Line two
+	</string>
 
 </resources>

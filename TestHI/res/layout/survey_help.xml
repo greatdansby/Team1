@@ -5,7 +5,7 @@
     android:background="#CC000000" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txtSurveyHelpMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
