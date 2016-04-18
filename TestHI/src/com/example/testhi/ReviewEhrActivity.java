@@ -9,12 +9,15 @@ import org.json.JSONObject;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.RadarData;
+import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import android.R.color;
@@ -37,6 +40,7 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 	fetchDataFromAppServer getAnalyticData = new fetchDataFromAppServer();
 	fetchDataFromAppServer getObservationData = new fetchDataFromAppServer();
 	fetchDataFromAppServer getConditionData = new fetchDataFromAppServer();
+	fetchDataFromAppServer getVitalsData = new fetchDataFromAppServer();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +53,15 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 		getAnalyticData.delegate = this;
 		getAnalyticData.execute("a","Analytics/Risks/?patientId="+MainActivity.user.getTag());
 		
+		getVitalsData.delegate = this;
+		getVitalsData.execute("d","Analytics/VitalsRadar/?patientId="+MainActivity.user.getTag());
+		
 		getObservationData.delegate = this;
 		getObservationData.execute("b","GetObservationsFHIR_SQL/?patientId="+MainActivity.user.getTag());
 		
 		getConditionData.delegate = this;
 		getConditionData.execute("c","GetConditionsFHIR_SQL/?patientId="+MainActivity.user.getTag());
+
 	}
 	
 	@SuppressLint("NewApi")
@@ -61,6 +69,8 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 	public void processFinish(String output, String id) {
 
 		JSONArray dataArray = null;
+		JSONArray baselineArray = null;
+		JSONArray resultsArray = null;
 		LinearLayout parent;
 		LinearLayout child;
 		JSONObject allInfo;		
@@ -293,7 +303,7 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				for (int i=0; i < c.length(); i++){
 					
 					try {
-						switch(((JSONObject) c.get(i)).getString("Condition")){
+						switch(((JSONObject) c.get(i)).getString("Disease")){
 							case " Essential hypertension ":
 								dataC1.put(c.get(i));
 								break;
@@ -365,6 +375,65 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				addChart(mCCharts,dataC3,"Lightheadedness", "txtConditions3Chart");
 				addChart(mCCharts,dataC4,"Morning headache", "txtConditions4Chart");
 				
+				break;
+			case "d": //Add analytics charts				
+				
+				//Parse JSON
+				
+				try {
+					allInfo = new JSONObject(output);
+					meta = allInfo.getJSONObject("chartMeta");
+					resultsArray = allInfo.getJSONArray("results");
+					baselineArray = allInfo.getJSONArray("baseline");
+					records = meta.getInt("recordCount");
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//Create data entries
+				
+				ArrayList<Entry> baselineEntries = new ArrayList<>();
+				ArrayList<Entry> resultsEntries = new ArrayList<>();
+				ArrayList<String> labelList = new ArrayList<String>();
+				for (int i=0; i < records; i++){
+					JSONObject data;
+					try {
+						data = (JSONObject) baselineArray.get(i);
+						baselineEntries.add(new Entry((float) data.getInt("rank"), i));
+						labelList.add(data.getString("observation"));
+						data = (JSONObject) resultsArray.get(i);
+						resultsEntries.add(new Entry((float) data.getInt("rank"), i));
+						
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+		
+				//Configure charts
+				
+				RadarDataSet dataset_comp1 = new RadarDataSet(baselineEntries, "Baseline");
+				RadarDataSet dataset_comp2 = new RadarDataSet(resultsEntries, "Me");
+				dataset_comp1.setColor(Color.CYAN);				 
+				dataset_comp2.setColor(Color.RED);
+				dataset_comp1.setDrawFilled(true);				 
+				dataset_comp2.setDrawFilled(true);
+				
+				ArrayList<RadarDataSet> dataSets = new ArrayList<>();
+				dataSets.add(dataset_comp1);
+				dataSets.add(dataset_comp2);
+				
+				RadarData radarDataset = new RadarData(labelList, dataSets);
+				
+				RadarChart chart2 = new RadarChart(this);
+				LinearLayout myCharts2 = (LinearLayout) findViewById(R.id.chartView);
+				myCharts2.addView(chart2,((View) myCharts2.getParent()).getWidth(),myCharts2.getHeight());
+				
+				chart2.setData(radarDataset);
+				
+				chart2.setDescription("Vitals Radar Chart");
+				chart2.animateY(5000);
 				break;
 				
 	}
@@ -474,12 +543,90 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 		}
 	}
 	public void scrollCharts(View v){
+		final HorizontalScrollView s = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
 		switch (v.getId()) {
 	    case (R.id.txtHealthInfo1Chart):
-	    	final HorizontalScrollView s = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
+	    	
 	    	   s.post(new Runnable() { 
 	    	        public void run() { 
 	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo1Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtHealthInfo2Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo2Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtHealthInfo3Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo3Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtHealthInfo4Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo4Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtHealthInfo5Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo5Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtHealthInfo6Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo6Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtHealthInfo7Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo7Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtHealthInfo8Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtHealthInfo8Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtConditions1Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtConditions1Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtConditions2Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtConditions2Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtConditions3Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtConditions3Chart").getX(), 0);
+	    	        } 
+	    	});
+    		break;
+	    case (R.id.txtConditions4Chart):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("txtConditions4Chart").getX(), 0);
 	    	        } 
 	    	});
     		break;
