@@ -18,84 +18,63 @@
         <string name="main_help_html">
         <![CDATA[
         <h1>Main Menu Help</h1>
-        <h2>A sub-title</h2>
-        <p>This is some html. Look, here\'s an <u>underline</u>.</p>
-        <p>Look, this is <em>emphasized.</em> And here\'s some <b>bold</b>.</p>
-        <p>This is a UL list:
-        <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ul>
-        <p>This is an OL list:
-        <ol>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ol>
+        <h2>Purpose of The Main Menu</h2>
+        <p>The Main Menu is where you should logon with your ID.</p>
+        <p>You can also The Main Menu to access other sections of the Waiting Room App.</p>
+        <br>
+        <h2>App Tabs at the Top of the Screen</h2>
+        <p>You can use the Tabs at the top of the Waiting Room App to access each section sequentially or as needed.</p>
+        <p><b>Note:  </b>You can use these Tabs is each section of the Waiting Room App.</p>
+        <p>You can also use the buttons in the middle ot the screen to move to each section of the Waiting Room App.</p>
+        <br>
+        <h2>Logon</h2>
+        <p>Enter your ID and press the \"Logon\" button.</p>
         ]]>
     </string>
     
     <string name="review_help_html">
         <![CDATA[
-        <h1>Review Menu Help</h1>
-        <h2>A sub-title</h2>
-        <p>This is some html. Look, here\'s an <u>underline</u>.</p>
-        <p>Look, this is <em>emphasized.</em> And here\'s some <b>bold</b>.</p>
-        <p>This is a UL list:
-        <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ul>
-        <p>This is an OL list:
-        <ol>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ol>
+        <h1>My Record & Stats Help</h1>
+        <h2>Purpose of The \"My Record & Stats\" Screen</h2>
+        <p>The \"My Record & Stats\" Screen is where you can review your official medical records.</p>
+        <p>You should reveiw them for accuracy and <b>flag</b> any items that are incorrect.</p>
+        <p><b>Note:  </b>Flagging an item doesn\'t change your official mediical records. Rather, it ensures that your physician verifies the data with you.</p>
+        <p>Its important to understand your medical records and are aligned with your phycisan\'s view of your health.</p>
+        <br>
+        <h2>Information Review</h2>
+        <p>On the lower right of the screen, your official medical records are displayed.</p>
+        <p>Here you can review your information and flag anything that looks incorrect.</p>
+        <p>Use the buttons on the lower left to move through each section of data.</p>
+        <p>Use the \"Chart\" button to graphically display the data.</p>
+        <p>Use the \"Flag\" button to request a review of the data with your physician.</p>
+        <br>
+        <h2>Charts</h2>
+        <p>A specific, easy-to-read chart will appear depending on the type of information you\'re reviewing.</p>
         ]]>
     </string>
     
     <string name="survey_help_html">
         <![CDATA[
-        <h1>Survey Menu Help</h1>
-        <h2>A sub-title</h2>
-        <p>This is some html. Look, here\'s an <u>underline</u>.</p>
-        <p>Look, this is <em>emphasized.</em> And here\'s some <b>bold</b>.</p>
-        <p>This is a UL list:
-        <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ul>
-        <p>This is an OL list:
-        <ol>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ol>
+        <h1>Surveys & Quizzes Help</h1>
+        <h2>Purpose of \"The Surveys & Quizzes\" Screen</h2>
+        <p>On the \"The Surveys & Quizzes\" Screen you have the opportunity to take a simple survey to screen for specific medical conditions.</p>
+        <p><b>Note:  </b>The surveys dsiplayed are specifically selected for you based on your medical records.</p>
+        <br>
+        <h2>Surveys</h2>
+        <p>Select each Survey and follow the instructions.</p>
+        <p>Your surveys are saved and can be reviewed with your physician.</p>
         ]]>
     </string>
-    
-    <string name="connect_help_html">
+        
+	<string name="connect_help_html">
         <![CDATA[
-        <h1>Connect Menu Help</h1>
-        <h2>A sub-title</h2>
-        <p>This is some html. Look, here\'s an <u>underline</u>.</p>
-        <p>Look, this is <em>emphasized.</em> And here\'s some <b>bold</b>.</p>
-        <p>This is a UL list:
-        <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ul>
-        <p>This is an OL list:
-        <ol>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-        </ol>
+        <h1>Third Party Connections Help</h1>
+        <h2>Purpose of The \"Third Pary Connections\" Screen</h2>
+        <p>The \"Third Pary Connections\" Screen allows you to connect your official medical records with all of your other health and wellness data.</p>
+        <p>For example, you can connect to your FitBit or 23andMe data.</p>
+        <p>This enables you and your physician to get a more complete view of your health.</p>
+        <h2>Surveys</h2>
+        <p>Select the \"Choose Source\" button to connect to your personal health and wellness data.  Then, select where your data is stored.</p>
         ]]>
     </string>
 
