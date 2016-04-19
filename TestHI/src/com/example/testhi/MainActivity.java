@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
@@ -22,7 +19,13 @@ public class MainActivity extends TabActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);
-	    getActionBar().setTitle("WaitingRoom App");
+
+	    //getActionBar().setIcon(R.drawable.helpquestionmark);
+	    getActionBar().setDisplayShowHomeEnabled(true);
+	    getActionBar().setLogo(R.drawable.smc);
+	    getActionBar().setDisplayUseLogoEnabled(true);
+	    
+	    getActionBar().setTitle("    WaitingRoom App");
 	    
 	    user = (TextView) findViewById(R.id.userLogin);
 	    
