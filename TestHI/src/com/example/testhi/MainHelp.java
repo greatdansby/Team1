@@ -2,7 +2,10 @@ package com.example.testhi;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.DisplayMetrics;
+import android.widget.TextView;
 
 public class MainHelp extends Activity
 {
@@ -17,6 +20,14 @@ public class MainHelp extends Activity
 		int width = dm.widthPixels;
 		int height = dm.heightPixels;
 		
-		getWindow().setLayout((int)(width * 0.8), (int)(height * 0.8));		
+		getWindow().setLayout((int)(width * 0.8), (int)(height * 0.8));
+		
+		// get our html content
+		String htmlAsString = getString(R.string.main_help_html);
+		Spanned htmlAsSpanned = Html.fromHtml(htmlAsString); // used by TextView
+
+		// set the html content on the TextView
+		TextView textView = (TextView) findViewById(R.id.txtMainHelpMsg);
+		textView.setText(htmlAsSpanned);
 	}
 }
