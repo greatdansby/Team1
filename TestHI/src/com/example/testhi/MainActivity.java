@@ -22,10 +22,10 @@ public class MainActivity extends TabActivity {
 
 	    //getActionBar().setIcon(R.drawable.helpquestionmark);
 	    getActionBar().setDisplayShowHomeEnabled(true);
-	    getActionBar().setLogo(R.drawable.smc);
+	    getActionBar().setLogo(R.drawable.smc4);
 	    getActionBar().setDisplayUseLogoEnabled(true);
 	    
-	    getActionBar().setTitle("    WaitingRoom App");
+	    getActionBar().setTitle("        WaitingRoom App");
 	    
 	    user = (TextView) findViewById(R.id.userLogin);
 	    
