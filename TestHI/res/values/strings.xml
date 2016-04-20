@@ -19,7 +19,7 @@
         <![CDATA[
         <h1>Main Menu Help</h1>
         <h2>Purpose of The Main Menu</h2>
-        <p>The Main Menu is where you should logon with your ID.</p>
+        <p>The Main Menu is where you should logon with your e-mail address.</p>
         <p>You can also The Main Menu to access other sections of the Waiting Room App.</p>
         <br>
         <h2>App Tabs at the Top of the Screen</h2>
@@ -28,7 +28,10 @@
         <p>You can also use the buttons in the middle ot the screen to move to each section of the Waiting Room App.</p>
         <br>
         <h2>Logon</h2>
-        <p>Enter your ID and press the \"Logon\" button.</p>
+        <p>Enter your e-mail address and press the \"Logon\" button.</p>
+        <br>
+        <h2>Next</h2>
+        <p>Us the \"Next\" button on the bottom of each screen to progress from section to section.</p>
         ]]>
     </string>
     
@@ -63,6 +66,9 @@
         <h2>Surveys</h2>
         <p>Select each Survey and follow the instructions.</p>
         <p>Your surveys are saved and can be reviewed with your physician.</p>
+        <br>
+        <p>The <b>\"View Results\"</b> button indicates that you\'ve already taken this survey.  You can look at your stored results or take it again.</p>
+        <p>Use the <b>\"Take Survey\"</b> button to take a new survey.</p>
         ]]>
     </string>
         
@@ -73,8 +79,6 @@
         <p>The \"Third Pary Connections\" Screen allows you to connect your official medical records with all of your other health and wellness data.</p>
         <p>For example, you can connect to your FitBit or 23andMe data.</p>
         <p>This enables you and your physician to get a more complete view of your health.</p>
-        <h2>Surveys</h2>
-        <p>Select the \"Choose Source\" button to connect to your personal health and wellness data.  Then, select where your data is stored.</p>
         ]]>
     </string>
 
