@@ -13,7 +13,7 @@ public class SurveyHelp extends Activity
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.survey_help);
+		setContentView(R.layout.survey_help2);
 		
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -23,11 +23,11 @@ public class SurveyHelp extends Activity
 		getWindow().setLayout((int)(width * 0.8), (int)(height * 0.8));
 		
 		// get our html content
-		String htmlAsString = getString(R.string.survey_help_html);
+		String htmlAsString = getString(R.string.survey_help2_html);
 		Spanned htmlAsSpanned = Html.fromHtml(htmlAsString); // used by TextView
 
 		// set the html content on the TextView
-		TextView textView = (TextView) findViewById(R.id.txtSurveyHelpMsg);
+		TextView textView = (TextView) findViewById(R.id.txtSurveyHelp2Msg);
 		textView.setText(htmlAsSpanned);
 	}
 }

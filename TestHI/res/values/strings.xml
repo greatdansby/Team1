@@ -71,6 +71,39 @@
         <p>Use the <b>\"Take Survey\"</b> button to take a new survey.</p>
         ]]>
     </string>
+    
+        <string name="survey_help2_html">
+        <![CDATA[
+        <h1>Surveys & Quizzes Help</h1>
+        <h2>Purpose of \"The Surveys & Quizzes\" Screen</h2>
+        <p>On the \"The Surveys & Quizzes\" Screen you have the opportunity to take a simple survey to screen for specific medical conditions.</p>
+        <p><b>Note:  </b>The surveys dsiplayed are specifically selected for you based on your medical records.</p>
+        <br>
+        <h2>Surveys</h2>
+        <p>Select each Survey and follow the instructions.</p>
+        <p>Your surveys are saved and can be reviewed with your physician.</p>
+        <br>
+        <p>The <b>\"View Results\"</b> button indicates that you\'ve already taken this survey.  You can look at your stored results or take it again.</p>
+        <p>Use the <b>\"Take Survey\"</b> button to take a new survey.</p>
+        <br>
+        <br>
+        <h2>Surveys Available</h2>
+        <p>The surveys currently available are:</p>
+        <p><b>Breast Cancer Risk Assessment Tool</b></p>
+        <p>This tool estimates a woman\'s risk of developing invasive breast cancer.  Invasive breast cancer is cancer that has spread from where it started	in the breast into surrounding, healthy tissue. Most invasive breast cancers start in the ducts(tubes that carry milk from the lobules to the nipple.) Invasive breast cancer can spread to other parts of the body through the blood and lymph systems.<p>
+		<br>
+		<p><b>Melanoma Risk Assessment Tool</b></p>
+		<p>This tool estimates an individual\'s risk of developing melanoma during the next 5 year period and up to age 70, based on risk factors.  Melanoma develops when unrepaired DNA damage to skin cells, (most often caused by ultraviolet radiation from sunshine or tanning beds) triggers mutations that lead the skin cells to multiply rapidly and form malignant tumors.</p>
+		<br>
+		<p><b>Diabetes Risk Assessment Tool</b></p>
+        <p>This tool estimates an individual\'s risk of developing Type 2 diabetes. Type 2 diabetes is a condition in which the body becomes resistant to the normal effects of insulin or doesn\'t produce enough insulin. This means that glucose stays in the blood and isn\'t used as fuel for energy. The high blood sugar level makes you feel thirsty, urinate more than usual and feel tired all the time.<p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        ]]>
+    </string>
         
 	<string name="connect_help_html">
         <![CDATA[
