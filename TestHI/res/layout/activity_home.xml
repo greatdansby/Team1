@@ -40,111 +40,125 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:onClick="login"
             android:text="Login"
-            android:onClick="login"/>
+            android:textSize="35sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="150dp" >
+        android:layout_height="150dp"
+        android:padding="5dp" >
 
         <TextView
             android:id="@+id/txtConditions4Date"
-            android:layout_width="300dp"
+            android:layout_width="175dp"
             android:layout_height="fill_parent"
             android:layout_margin="15dp"
-            android:background="@drawable/roundedcorners"
             android:gravity="center"
             android:text="Home"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30dp" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/txtConditions4Value"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="This home screen, where you can login and navigate to the following areas."
-            android:textSize="20dp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="150dp" >
+        android:layout_height="150dp"
+        android:padding="5dp" >
 
         <TextView
             android:id="@+id/txtConnectHelpMsg"
-            android:layout_width="300dp"
+            android:layout_width="175dp"
             android:layout_height="fill_parent"
             android:layout_margin="15dp"
-            android:background="@drawable/roundedcorners"
             android:gravity="center"
             android:text="My Records"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30dp" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/txtHealthInfo1Date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="Review all of your medical information and view statistics on your health profile"
-            android:textSize="20dp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="150dp"
-        android:layout_weight="0" >
+        android:layout_weight="0"
+        android:padding="5dp" >
 
         <TextView
             android:id="@+id/txtConditions4"
-            android:layout_width="300dp"
+            android:layout_width="175dp"
             android:layout_height="fill_parent"
             android:layout_margin="15dp"
-            android:background="@drawable/roundedcorners"
             android:gravity="center"
             android:text="Surveys &amp; Quizzes"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30dp" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/txtConditions4Units"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="Take surveys &amp; quizzes to better help predict health outcomes. View previous survey results."
-            android:textSize="20dp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="150dp"
-        android:layout_weight="0" >
+        android:layout_weight="0"
+        android:padding="5dp" >
 
         <TextView
             android:id="@+id/txtConditions2Value"
-            android:layout_width="300dp"
+            android:layout_width="175dp"
             android:layout_height="fill_parent"
             android:layout_margin="15dp"
-            android:background="@drawable/roundedcorners"
             android:gravity="center"
             android:text="3rd Party Apps"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30dp" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/txtConditions4Desc"
             android:layout_width="400dp"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="Connect to 3rd party applications such as FitBit &amp; 23andMe to see new statistics on your health."
-            android:textSize="20dp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:text="DISCLAIMER: The information contained with in this application is intended to be for informational purposes only. Any diagnosis, recomendations or change in health care should be reiewed with your physician."
+        android:textSize="25sp" />
 
 </LinearLayout>

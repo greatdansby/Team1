@@ -33,7 +33,7 @@
                 android:paddingRight="5dp" >
 
                 <Button
-                    android:id="@+id/Button01"
+                    android:id="@+id/btnAnalytics"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -129,7 +129,7 @@
                                 android:layout_weight="1" >
 
                                 <TextView
-                                    android:id="@+id/TextView09"
+                                    android:id="@+id/txtAnalytics1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -157,7 +157,7 @@
                             android:text="Chart" />
 
                         <Button
-                            android:id="@+id/Button04"
+                            android:id="@+id/txtAnalytics1Flag"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -185,7 +185,7 @@
                                 android:layout_weight="1" >
 
                                 <TextView
-                                    android:id="@+id/TextView04"
+                                    android:id="@+id/txtAnalytics2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -214,7 +214,7 @@
                             android:text="Chart" />
 
                         <Button
-                            android:id="@+id/Button02"
+                            android:id="@+id/txtAnalytics2Flag"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"

@@ -39,7 +39,8 @@
                 android:layout_width="179dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.73"
-                android:text="Next" />
+                android:text="Next" 
+                android:onClick="nextTab"/>
 
             <ImageView
                 android:id="@+id/imageView1"

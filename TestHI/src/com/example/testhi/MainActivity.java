@@ -99,4 +99,15 @@ public class MainActivity extends TabActivity {
 			break;
 		}
 	}
+	
+	public void nextTab(View v){
+		TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+		Integer currentTab = tabHost.getCurrentTab();
+		Integer nextTab = currentTab+1;
+		if(nextTab==tabHost.getTabWidget().getTabCount()){
+			nextTab=0;
+		}
+		tabHost.setCurrentTab(nextTab);
+		
+	}
 }

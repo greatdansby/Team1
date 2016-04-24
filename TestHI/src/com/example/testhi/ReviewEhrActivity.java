@@ -10,6 +10,9 @@ import org.json.JSONObject;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.RadarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -115,13 +118,23 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				
 				BarChart chart = new BarChart(this);
 				LinearLayout myCharts = (LinearLayout) findViewById(R.id.chartView);
+				chart.setTag("analyticsChart1");
 				myCharts.addView(chart,((View) myCharts.getParent()).getWidth(),myCharts.getHeight());
 				
 				BarData barData = new BarData(labels, dataset);
+				barData.setValueTextSize(15f);
 				chart.setData(barData);
 				
 				chart.setDescription("Disease Risk Assessment");
+				YAxis leftAxis = chart.getAxisLeft();
+				leftAxis.setTextSize(20f);
+				YAxis rightAxis = chart.getAxisRight();
+				rightAxis.setTextSize(20f);
+				XAxis topAxis =chart.getXAxis();
+				topAxis.setTextSize(15f);
 				dataset.setColors(ColorTemplate.COLORFUL_COLORS);
+				Legend legend = chart.getLegend();
+				legend.setTextSize(15f);
 				chart.animateY(5000);
 				break;
 		
@@ -188,76 +201,76 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				//Sort arrays by date, populate views with latest record
 				try {
 					TextView OB1 = (TextView) this.findViewById(R.id.txtHealthInfo1);			
-					OB1.setText(((JSONObject) data1.get(0)).getString("Observation") + ":");
+					OB1.setText(((JSONObject) data1.get(data1.length()-1)).getString("Observation") + ":");
 					TextView OB1Value = (TextView) this.findViewById(R.id.txtHealthInfo1Value);
-					OB1Value.setText(((JSONObject) data1.get(0)).getString("Value"));
+					OB1Value.setText(((JSONObject) data1.get(data1.length()-1)).getString("Value"));
 					TextView OB1Units = (TextView) this.findViewById(R.id.txtHealthInfo1Units);
-					OB1Units.setText(((JSONObject) data1.get(0)).getString("Unit"));
+					OB1Units.setText(((JSONObject) data1.get(data1.length()-1)).getString("Unit"));
 					TextView OB1Date = (TextView) this.findViewById(R.id.txtHealthInfo1Date);
-					OB1Date.setText(((JSONObject) data1.get(0)).getString("Date"));
+					OB1Date.setText(((JSONObject) data1.get(data1.length()-1)).getString("Date"));
 					
 					TextView OB2 = (TextView) this.findViewById(R.id.txtHealthInfo2);
-					OB2.setText(((JSONObject) data2.get(0)).getString("Observation") + ":");
+					OB2.setText(((JSONObject) data2.get(data2.length()-1)).getString("Observation") + ":");
 					TextView OB2Value = (TextView) this.findViewById(R.id.txtHealthInfo2Value);
-					OB2Value.setText(((JSONObject) data2.get(0)).getString("Value"));
+					OB2Value.setText(((JSONObject) data2.get(data2.length()-1)).getString("Value"));
 					TextView OB2Units = (TextView) this.findViewById(R.id.txtHealthInfo2Units);
-					OB2Units.setText(((JSONObject) data2.get(0)).getString("Unit"));
+					OB2Units.setText(((JSONObject) data2.get(data2.length()-1)).getString("Unit"));
 					TextView OB2Date = (TextView) this.findViewById(R.id.txtHealthInfo2Date);
-					OB2Date.setText(((JSONObject) data2.get(0)).getString("Date"));
+					OB2Date.setText(((JSONObject) data2.get(data2.length()-1)).getString("Date"));
 					
 					TextView OB3 = (TextView) this.findViewById(R.id.txtHealthInfo3);
-					OB3.setText(((JSONObject) data3.get(0)).getString("Observation") + ":");
+					OB3.setText(((JSONObject) data3.get(data3.length()-1)).getString("Observation") + ":");
 					TextView OB3Value = (TextView) this.findViewById(R.id.txtHealthInfo3Value);
-					OB3Value.setText(((JSONObject) data3.get(0)).getString("Value"));
+					OB3Value.setText(((JSONObject) data3.get(data3.length()-1)).getString("Value"));
 					TextView OB3Units = (TextView) this.findViewById(R.id.txtHealthInfo3Units);
-					OB3Units.setText(((JSONObject) data3.get(0)).getString("Unit"));
+					OB3Units.setText(((JSONObject) data3.get(data3.length()-1)).getString("Unit"));
 					TextView OB3Date = (TextView) this.findViewById(R.id.txtHealthInfo3Date);
-					OB3Date.setText(((JSONObject) data3.get(0)).getString("Date"));
+					OB3Date.setText(((JSONObject) data3.get(data3.length()-1)).getString("Date"));
 					
 					TextView OB4 = (TextView) this.findViewById(R.id.txtHealthInfo4);
-					OB4.setText(((JSONObject) data4.get(0)).getString("Observation") + ":");
+					OB4.setText(((JSONObject) data4.get(data4.length()-1)).getString("Observation") + ":");
 					TextView OB4Value = (TextView) this.findViewById(R.id.txtHealthInfo4Value);
-					OB4Value.setText(((JSONObject) data4.get(0)).getString("Value"));
+					OB4Value.setText(((JSONObject) data4.get(data4.length()-1)).getString("Value"));
 					TextView OB4Units = (TextView) this.findViewById(R.id.txtHealthInfo4Units);
-					OB4Units.setText(((JSONObject) data4.get(0)).getString("Unit"));
+					OB4Units.setText(((JSONObject) data4.get(data4.length()-1)).getString("Unit"));
 					TextView OB4Date = (TextView) this.findViewById(R.id.txtHealthInfo4Date);
-					OB4Date.setText(((JSONObject) data4.get(0)).getString("Date"));
+					OB4Date.setText(((JSONObject) data4.get(data4.length()-1)).getString("Date"));
 					
 					TextView OB5 = (TextView) this.findViewById(R.id.txtHealthInfo5);
-					OB5.setText(((JSONObject) data5.get(0)).getString("Observation") + ":");
+					OB5.setText(((JSONObject) data5.get(data5.length()-1)).getString("Observation") + ":");
 					TextView OB5Value = (TextView) this.findViewById(R.id.txtHealthInfo5Value);
-					OB5Value.setText(((JSONObject) data5.get(0)).getString("Value"));
+					OB5Value.setText(((JSONObject) data5.get(data5.length()-1)).getString("Value"));
 					TextView OB5Units = (TextView) this.findViewById(R.id.txtHealthInfo5Units);
-					OB5Units.setText(((JSONObject) data5.get(0)).getString("Unit"));
+					OB5Units.setText(((JSONObject) data5.get(data5.length()-1)).getString("Unit"));
 					TextView OB5Date = (TextView) this.findViewById(R.id.txtHealthInfo5Date);
-					OB5Date.setText(((JSONObject) data5.get(0)).getString("Date"));
+					OB5Date.setText(((JSONObject) data5.get(data5.length()-1)).getString("Date"));
 					
 					TextView OB6 = (TextView) this.findViewById(R.id.txtHealthInfo6);
-					OB6.setText(((JSONObject) data6.get(0)).getString("Observation") + ":");
+					OB6.setText(((JSONObject) data6.get(data6.length()-1)).getString("Observation") + ":");
 					TextView OB6Value = (TextView) this.findViewById(R.id.txtHealthInfo6Value);
-					OB6Value.setText(((JSONObject) data6.get(0)).getString("Value"));
+					OB6Value.setText(((JSONObject) data6.get(data6.length()-1)).getString("Value"));
 					TextView OB6Units = (TextView) this.findViewById(R.id.txtHealthInfo6Units);
-					OB6Units.setText(((JSONObject) data6.get(0)).getString("Unit"));
+					OB6Units.setText(((JSONObject) data6.get(data6.length()-1)).getString("Unit"));
 					TextView OB6Date = (TextView) this.findViewById(R.id.txtHealthInfo6Date);
-					OB6Date.setText(((JSONObject) data6.get(0)).getString("Date"));
+					OB6Date.setText(((JSONObject) data6.get(data6.length()-1)).getString("Date"));
 					
 					TextView OB7 = (TextView) this.findViewById(R.id.txtHealthInfo7);
-					OB7.setText(((JSONObject) data7.get(0)).getString("Observation") + ":");
+					OB7.setText(((JSONObject) data7.get(data7.length()-1)).getString("Observation") + ":");
 					TextView OB7Value = (TextView) this.findViewById(R.id.txtHealthInfo7Value);
-					OB7Value.setText(((JSONObject) data7.get(0)).getString("Value"));
+					OB7Value.setText(((JSONObject) data7.get(data7.length()-1)).getString("Value"));
 					TextView OB7Units = (TextView) this.findViewById(R.id.txtHealthInfo7Units);
-					OB7Units.setText(((JSONObject) data7.get(0)).getString("Unit"));
+					OB7Units.setText(((JSONObject) data7.get(data7.length()-1)).getString("Unit"));
 					TextView OB7Date = (TextView) this.findViewById(R.id.txtHealthInfo7Date);
-					OB7Date.setText(((JSONObject) data7.get(0)).getString("Date"));
+					OB7Date.setText(((JSONObject) data7.get(data7.length()-1)).getString("Date"));
 					
 					TextView OB8 = (TextView) this.findViewById(R.id.txtHealthInfo8);
-					OB8.setText(((JSONObject) data8.get(0)).getString("Observation") + ":");
+					OB8.setText(((JSONObject) data8.get(data8.length()-1)).getString("Observation") + ":");
 					TextView OB8Value = (TextView) this.findViewById(R.id.txtHealthInfo8Value);
-					OB8Value.setText(((JSONObject) data8.get(0)).getString("Value"));
+					OB8Value.setText(((JSONObject) data8.get(data8.length()-1)).getString("Value"));
 					TextView OB8Units = (TextView) this.findViewById(R.id.txtHealthInfo8Units);
-					OB8Units.setText(((JSONObject) data8.get(0)).getString("Unit"));
+					OB8Units.setText(((JSONObject) data8.get(data8.length()-1)).getString("Unit"));
 					TextView OB8Date = (TextView) this.findViewById(R.id.txtHealthInfo8Date);
-					OB8Date.setText(((JSONObject) data8.get(0)).getString("Date"));
+					OB8Date.setText(((JSONObject) data8.get(data8.length()-1)).getString("Date"));
 				} catch (JSONException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -327,40 +340,40 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				try {
 
 					TextView C1 = (TextView) this.findViewById(R.id.txtConditions1);
-					C1.setText(((JSONObject) dataC1.get(0)).getString("Disease"));
+					C1.setText(((JSONObject) dataC1.get(dataC1.length()-1)).getString("Disease"));
 					TextView C1Value = (TextView) this.findViewById(R.id.txtConditions1Value);
 					C1Value.setText("");
 					TextView C1Units = (TextView) this.findViewById(R.id.txtConditions1Units);
 					C1Units.setText("");
 					TextView C1Date = (TextView) this.findViewById(R.id.txtConditions1Date);
-					C1Date.setText(((JSONObject) dataC1.get(0)).getString("Date"));
+					C1Date.setText(((JSONObject) dataC1.get(dataC1.length()-1)).getString("Date"));
 					
 					TextView C2 = (TextView) this.findViewById(R.id.txtConditions2);
-					C2.setText(((JSONObject) dataC2.get(0)).getString("Disease"));
+					C2.setText(((JSONObject) dataC2.get(dataC2.length()-1)).getString("Disease"));
 					TextView C2Value = (TextView) this.findViewById(R.id.txtConditions2Value);
 					C2Value.setText("");
 					TextView C2Units = (TextView) this.findViewById(R.id.txtConditions2Units);
 					C2Units.setText("");
 					TextView C2Date = (TextView) this.findViewById(R.id.txtConditions2Date);
-					C2Date.setText(((JSONObject) dataC2.get(0)).getString("Date"));
+					C2Date.setText(((JSONObject) dataC2.get(dataC2.length()-1)).getString("Date"));
 					
 					TextView C3 = (TextView) this.findViewById(R.id.txtConditions3);
-					C3.setText(((JSONObject) dataC3.get(0)).getString("Disease"));
+					C3.setText(((JSONObject) dataC3.get(dataC3.length()-1)).getString("Disease"));
 					TextView C3Value = (TextView) this.findViewById(R.id.txtConditions3Value);
 					C3Value.setText("");
 					TextView C3Units = (TextView) this.findViewById(R.id.txtConditions3Units);
 					C3Units.setText("");
 					TextView C3Date = (TextView) this.findViewById(R.id.txtConditions3Date);
-					C3Date.setText(((JSONObject) dataC3.get(0)).getString("Date"));
+					C3Date.setText(((JSONObject) dataC3.get(dataC3.length()-1)).getString("Date"));
 					
 					TextView C4 = (TextView) this.findViewById(R.id.txtConditions4);
-					C4.setText(((JSONObject) dataC4.get(0)).getString("Disease"));
+					C4.setText(((JSONObject) dataC4.get(dataC4.length()-1)).getString("Disease"));
 					TextView C4Value = (TextView) this.findViewById(R.id.txtConditions4Value);
 					C4Value.setText("");
 					TextView C4Units = (TextView) this.findViewById(R.id.txtConditions4Units);
 					C4Units.setText("");
 					TextView C4Date = (TextView) this.findViewById(R.id.txtConditions4Date);
-					C4Date.setText(((JSONObject) dataC4.get(0)).getString("Date"));
+					C4Date.setText(((JSONObject) dataC4.get(dataC4.length()-1)).getString("Date"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -419,6 +432,8 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				dataset_comp2.setColor(Color.RED);
 				dataset_comp1.setDrawFilled(true);				 
 				dataset_comp2.setDrawFilled(true);
+				dataset_comp1.setValueTextSize(12f);
+				dataset_comp2.setValueTextSize(12f);
 				
 				ArrayList<RadarDataSet> dataSets = new ArrayList<>();
 				dataSets.add(dataset_comp1);
@@ -428,10 +443,16 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				
 				RadarChart chart2 = new RadarChart(this);
 				LinearLayout myCharts2 = (LinearLayout) findViewById(R.id.chartView);
+				chart2.setTag("analyticsChart2");
 				myCharts2.addView(chart2,((View) myCharts2.getParent()).getWidth(),myCharts2.getHeight());
 				
 				chart2.setData(radarDataset);
-				
+				Legend legend2 = chart2.getLegend();
+				legend2.setTextSize(15f);
+				YAxis YAxis = chart2.getYAxis();
+				YAxis.setTextSize(20f);
+				XAxis XAxis =chart2.getXAxis();
+				XAxis.setTextSize(15f);
 				chart2.setDescription("Vitals Radar Chart");
 				chart2.animateY(5000);
 				break;
@@ -455,14 +476,23 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 			}
 		}
 		LineDataSet dataset = new LineDataSet(entriesOB, "Value");
-		
+		dataset.setColors(ColorTemplate.LIBERTY_COLORS);
+		dataset.setValueTextSize(15f);
 		LineChart chart1 = new LineChart(this);
 		chart1.setTag(tag);				
 		myCharts.addView(chart1,((View) myCharts.getParent()).getWidth(),((View) myCharts.getParent()).getHeight());			
 		LineData barData = new LineData(labelsOB, dataset);
+		barData.setValueTextSize(20f);
 		chart1.setData(barData);				
 		chart1.setDescription(description);
-		dataset.setColors(ColorTemplate.COLORFUL_COLORS);
+		YAxis leftAxis = chart1.getAxisLeft();
+		leftAxis.setTextSize(20f);
+		YAxis rightAxis = chart1.getAxisRight();
+		rightAxis.setTextSize(20f);
+		XAxis topAxis =chart1.getXAxis();
+		topAxis.setTextSize(15f);
+		Legend legend = chart1.getLegend();
+		legend.setTextSize(15f);
 		chart1.animateY(5000);
 	}
 	
@@ -480,6 +510,14 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 		
 		TextView t = (TextView) v;
 		switch (v.getId()) {
+		case (R.id.txtAnalytics1Flag):			    	
+	    	t.setBackgroundResource(R.drawable.bluebutton);
+	    	t.setTextColor(Color.RED);
+	    	break;
+		case (R.id.txtAnalytics2Flag):			
+			t.setBackgroundResource(R.drawable.bluebutton);
+			t.setTextColor(Color.RED);
+			break;
 	    case (R.id.txtHealthInfo1Flag):
 	    	
 	    	t.setBackgroundResource(R.drawable.bluebutton);
@@ -545,6 +583,21 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 	public void scrollCharts(View v){
 		final HorizontalScrollView s = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
 		switch (v.getId()) {
+		case (R.id.Button05):
+	    	
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("analyticsChart1").getX(), 0);
+	    	        } 
+	    	});
+ 		break;
+	    case (R.id.Button03):
+	    	   s.post(new Runnable() { 
+	    	        public void run() { 
+	    	             s.smoothScrollTo((int) s.findViewWithTag("analyticsChart2").getX(), 0);
+	    	        } 
+	    	});
+	    break;
 	    case (R.id.txtHealthInfo1Chart):
 	    	
 	    	   s.post(new Runnable() { 
@@ -634,7 +687,18 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 		}
 	}
 	public void scrollEHR(View v){
-		switch (v.getId()) {
+		ScrollView s = (ScrollView) findViewById(R.id.scrollView1);	   
+		int resourceId = this.getResources().getIdentifier(v.getResources().getResourceName(v.getId()).replace("btn", "txt")+"1", "id", this.getPackageName());
+    	try {
+			LinearLayout x1 = (LinearLayout) findViewById(resourceId).getParent();
+	    	LinearLayout x2 = (LinearLayout) x1.getParent();
+	    	LinearLayout x3 = (LinearLayout) x2.getParent();
+	    	s.smoothScrollTo(0, (int) x3.getTop());
+    	} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*switch (v.getId()) {
 	    case (R.id.btnHealthInfo):
 	    	findViewById(R.id.scrollView1).scrollTo(0, (int) findViewById(R.id.txtHealthInfo1).getY());
 	    	break;
@@ -644,7 +708,6 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 	    	LinearLayout x1 = (LinearLayout) findViewById(R.id.txtConditions1).getParent();
 	    	LinearLayout x2 = (LinearLayout) x1.getParent();
 	    	LinearLayout x3 = (LinearLayout) x2.getParent();
-	    	LinearLayout x4 = (LinearLayout) x3.getParent();
 	    	s.smoothScrollTo(0, (int) x3.getTop());
 	    	break;
 	    	
@@ -663,7 +726,7 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 	    case (R.id.btn3rdParty):
 	    	findViewById(R.id.scrollView1).scrollTo(0, 0);
 	    	break;
-		}
+		}*/
 	}
 
 }
