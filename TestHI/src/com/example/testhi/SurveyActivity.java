@@ -26,7 +26,8 @@ import android.widget.TextView;
 
 public class SurveyActivity extends Activity implements myInterface {
 	
-	fetchDataFromAppServer fetchSurveyNames = new fetchDataFromAppServer();
+	
+	Integer survey = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +39,8 @@ public class SurveyActivity extends Activity implements myInterface {
 	protected void onStart(){
 		super.onStart();
 
-		fetchSurveyNames.delegate = this;
-        fetchSurveyNames.execute("a","GetAllSurveys?userId="+MainActivity.user.getTag());
-        
+		populateSurveyList();
+		
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class SurveyActivity extends Activity implements myInterface {
 					
 					jArray = new JSONArray(output);
 					parent = (LinearLayout) findViewById(R.id.allSurveys);
-					
+					parent.removeAllViews();
 					LayoutInflater inflater = (LayoutInflater)getBaseContext() .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 					
 			        for(int i = 0; i < jArray.length(); i++) {
@@ -69,20 +69,27 @@ public class SurveyActivity extends Activity implements myInterface {
 				            btn.setTag(p.getInt("id"));
 				            switch(p.getInt("survey_taken")){
 				            	case 0:
-				            		btn.setText("Take Survey".toString());
+				            		btn.setText("View Survey".toString());
+				            		btn.setOnClickListener(new OnClickListener(){
+						            	public void onClick(View v){
+						            		survey = (Integer) v.getTag();						     			            	
+						            		fillSurvey(v);
+						            		populateAnswers(v);
+						            	}
+						            });
 				            		break;
 				            	case 1:
 				            		btn.setText("View Results".toString());
+				            		btn.setOnClickListener(new OnClickListener(){
+						            	public void onClick(View v){
+						            		survey = (Integer) v.getTag();
+						            		getSurveyResults(v);			            	
+						            		fillSurvey(v);
+						            		populateAnswers(v);
+						            	}
+						            });
 				            		break;
 				            }
-				            btn.setOnClickListener(new OnClickListener(){
-				            	public void onClick(View v){
-				      
-				            		getSurveyResults(v);			            	
-				            		fillSurvey(v);
-				            		populateAnswers(v);
-				            	}
-				            });
 				            child.setTag(p.getInt("id"));
 				            parent.addView(child);
 					    }
@@ -126,13 +133,15 @@ public class SurveyActivity extends Activity implements myInterface {
 					t.setGravity(Gravity.CENTER);
 					t.setTextSize(30f);
 					t.setText("Get Results");
+					t.setTag(survey);
 					t.setBackgroundColor(3);
 					t.setBackgroundResource(R.drawable.yellowbutton);
 					t.setOnClickListener(new OnClickListener(){
 
 						@Override
 						public void onClick(View v) {
-							getSurveyResults(v);							
+							getSurveyResults(v);			
+							populateSurveyList();
 						}
 					});
 					parent.addView(t);
@@ -143,16 +152,20 @@ public class SurveyActivity extends Activity implements myInterface {
 				}
 				break;
 			case "c": //Populate survey results
-				TextView t = new TextView(this);
-				TextView s = new TextView(this);
-				s.setTextSize(30f);
-				s.setText("SURVEY RESULTS:");
-				t.setTextSize(18f);
-				t.setText(android.text.Html.fromHtml(output));
-				LinearLayout surveyResults = (LinearLayout) findViewById(R.id.surveyQuestions);
-				surveyResults.removeAllViews();
-				surveyResults.addView(s);
-				surveyResults.addView(t);
+				if(output != "null\t\t"){
+					TextView t = new TextView(this);
+					TextView s = new TextView(this);
+					s.setTextSize(30f);
+					s.setText("SURVEY RESULTS:");
+					t.setTextSize(18f);
+					t.setText(android.text.Html.fromHtml(output));
+					LinearLayout surveyResults = (LinearLayout) findViewById(R.id.surveyQuestions);
+					surveyResults.removeAllViews();
+					surveyResults.addView(s);
+					surveyResults.addView(t);					
+					//sendDataToAppServer sendSurveyResults = new sendDataToAppServer();
+					//sendSurveyResults.execute("e","SaveSurveyResults?surveyId="+survey+"&userId="+MainActivity.user.getTag());
+				}
 				break;	
 			case "d": //Populate survey questions
 		
@@ -195,6 +208,12 @@ public class SurveyActivity extends Activity implements myInterface {
 		fetchSurveyAnswers.delegate = this;
 		fetchSurveyAnswers.execute("d","GetSurveyAnswers?surveyId="+v.getTag()+"&userId="+MainActivity.user.getTag());
 		
+	}
+	
+	public void populateSurveyList() {
+		fetchDataFromAppServer fetchSurveyNames = new fetchDataFromAppServer();
+		fetchSurveyNames.delegate = this;
+	    fetchSurveyNames.execute("a","GetAllSurveys?userId="+MainActivity.user.getTag());
 	}
 	
 	public void getSurveyResults(View v) {

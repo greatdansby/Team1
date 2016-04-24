@@ -33,13 +33,20 @@
                 android:paddingRight="5dp" >
 
                 <Button
+                    android:id="@+id/Button01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:onClick="scrollEHR"
+                    android:text="MY ANALYTICS" />
+
+                <Button
                     android:id="@+id/btnHealthInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY HEALTH INFO"
-                    android:textSize="20sp" />
+                    android:text="MY HEALTH INFO" />
 
                 <Button
                     android:id="@+id/btnConditions"
@@ -47,8 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY CONDITIONS"
-                    android:textSize="20sp" />
+                    android:text="MY CONDITIONS" />
 
                 <Button
                     android:id="@+id/btnProcedures"
@@ -56,8 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY PROCEDURES"
-                    android:textSize="20sp" />
+                    android:text="MY PROCEDURES" />
 
                 <Button
                     android:id="@+id/btnDoctorsVisits"
@@ -65,8 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY DOCTORS VISITS"
-                    android:textSize="20sp" />
+                    android:text="MY DOCTORS VISITS" />
 
                 <Button
                     android:id="@+id/btnMedications"
@@ -74,8 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY MEDICATIONS"
-                    android:textSize="20sp" />
+                    android:text="MY MEDICATIONS" />
 
                 <Button
                     android:id="@+id/btnTestResults"
@@ -83,8 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY TEST RESULTS"
-                    android:textSize="20sp" />
+                    android:text="MY TEST RESULTS" />
 
                 <Button
                     android:id="@+id/btn3rdParty"
@@ -92,8 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:onClick="scrollEHR"
-                    android:text="MY 3RD PARTY DATA"
-                    android:textSize="20sp" />
+                    android:text="MY 3RD PARTY DATA" />
 
             </LinearLayout>
 
@@ -128,8 +129,121 @@
                                 android:layout_weight="1" >
 
                                 <TextView
+                                    android:id="@+id/TextView09"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Risk Factors"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/TextView10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="This chart uses conditions and observations from FHIR to determine which risk factors a patient has for certain diseases. The more risk factors a patient has (combined with certain risks having more weight) the higher the risk factor. The risk factor is displayed as a percentage, where higher percentages indicate higher risk."
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/Button05"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/Button04"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle"
+                            android:text="Flag" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/box" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
+                                    android:id="@+id/TextView04"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Vitals"
+                                    android:textSize="25sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/TextView05"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="This chart displays the patient&apos;s vital measurements as compared to generally accepted normal ranges for those vitals. The scale is from 1 to 10 with higher numbers indicating higher measurements. The normal ranges are graphed as well, with the patient&apos;s measurements overlaid as a comparison."
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/Button03"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/yellowbutton"
+                            android:onClick="scrollCharts"
+                            android:text="Chart" />
+
+                        <Button
+                            android:id="@+id/Button02"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/redbutton"
+                            android:onClick="flagToggle"
+                            android:text="Flag" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/box" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" >
+
+                                <TextView
                                     android:id="@+id/txtHealthInfo1"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Body Weight is: "
@@ -210,7 +324,7 @@
 
                                 <TextView
                                     android:id="@+id/txtHealthInfo2"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current BMI is: "
@@ -291,7 +405,7 @@
 
                                 <TextView
                                     android:id="@+id/txtHealthInfo3"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Body Height is: "
@@ -372,7 +486,7 @@
 
                                 <TextView
                                     android:id="@+id/txtHealthInfo4"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Body temperature is: "
@@ -453,7 +567,7 @@
 
                                 <TextView
                                     android:id="@+id/txtHealthInfo5"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Diastolic blood pressure is: "
@@ -534,7 +648,7 @@
 
                                 <TextView
                                     android:id="@+id/txtHealthInfo6"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Systolic blood pressure is: "
@@ -615,7 +729,7 @@
 
                                 <TextView
                                     android:id="@+id/txtHealthInfo7"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Heart rate is: "
@@ -696,7 +810,7 @@
 
                                 <TextView
                                     android:id="@+id/txtHealthInfo8"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Respiratory rate is: "
@@ -777,7 +891,7 @@
 
                                 <TextView
                                     android:id="@+id/txtConditions1"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Body Weight is: "
@@ -813,7 +927,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Essential hypertension is high blood pressure that doesn't have a known secondary cause. It is also referred to as primary hypertension. Blood pressure is the force of blood against your artery walls as your heart pumps blood through your body."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -858,7 +972,7 @@
 
                                 <TextView
                                     android:id="@+id/txtConditions2"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Body Weight is: "
@@ -894,7 +1008,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Dizziness is the feeling of being lightheaded, woozy, or unbalanced."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -939,7 +1053,7 @@
 
                                 <TextView
                                     android:id="@+id/txtConditions3"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Body Weight is: "
@@ -975,7 +1089,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Lightheadedness is feeling as if you might faint. Your body may feel heavy while your head feels as if it is not getting enough blood. Another way to describe lightheadedness is as a “reeling sensation.” Lightheadedness may be accompanied by clouded vision and a loss of balance."
                                 android:textSize="20sp" />
                         </LinearLayout>
 
@@ -1020,7 +1134,7 @@
 
                                 <TextView
                                     android:id="@+id/txtConditions4"
-                                    android:layout_width="fill_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="My current Body Weight is: "
@@ -1056,7 +1170,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Body weight is a measure of your body&apos;s weight."
+                                android:text="Cluster, migraine and tension-type headaches may produce a headache that awakens an individual in the early morning hours (usually after 4 AM), or is present upon awakening."
                                 android:textSize="20sp" />
                         </LinearLayout>
 

@@ -268,13 +268,13 @@ public class ReviewEhrActivity extends Activity implements myInterface {
 				LinearLayout myOBCharts = (LinearLayout) findViewById(R.id.chartView);
 
 				addChart(myOBCharts,data1,"Body Weight", "txtHealthInfo1Chart");
-				addChart(myOBCharts,data1,"Body Mass Index (BMI)", "txtHealthInfo2Chart");
-				addChart(myOBCharts,data1,"Body Height", "txtHealthInfo3Chart");
-				addChart(myOBCharts,data1,"Body Temperature", "txtHealthInfo4Chart");
-				addChart(myOBCharts,data1,"Diastolic Blood Pressure", "txtHealthInfo5Chart");
-				addChart(myOBCharts,data1,"Heart Rate", "txtHealthInfo6Chart");
-				addChart(myOBCharts,data1,"Systolic blood pressure", "txtHealthInfo7Chart");
-				addChart(myOBCharts,data1,"Respiratory rate", "txtHealthInfo8Chart");				
+				addChart(myOBCharts,data2,"Body Mass Index (BMI)", "txtHealthInfo2Chart");
+				addChart(myOBCharts,data3,"Body Height", "txtHealthInfo3Chart");
+				addChart(myOBCharts,data4,"Body Temperature", "txtHealthInfo4Chart");
+				addChart(myOBCharts,data5,"Diastolic Blood Pressure", "txtHealthInfo5Chart");
+				addChart(myOBCharts,data6,"Heart Rate", "txtHealthInfo6Chart");
+				addChart(myOBCharts,data7,"Systolic blood pressure", "txtHealthInfo7Chart");
+				addChart(myOBCharts,data8,"Respiratory rate", "txtHealthInfo8Chart");				
 				
 				break;
 			case "c":
